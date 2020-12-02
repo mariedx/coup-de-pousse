@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  orientation: MyString
+  floor_type: MyString
+  is_available: false
+  parking: false
+  tools_available: false
+  surface: 1
+  image_url: MyString
+
+two:
+  title: MyString
+  description: MyText
+  orientation: MyString
+  floor_type: MyString
+  is_available: false
+  parking: false
+  tools_available: false
+  surface: 1
+  image_url: MyString
