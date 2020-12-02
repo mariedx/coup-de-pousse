@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'gardens#index'
+  get '/users/dashboard', to: 'users#dashboard'
 
   devise_for :users
   resources :users
