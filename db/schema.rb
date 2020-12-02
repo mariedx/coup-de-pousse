@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_153016) do
+ActiveRecord::Schema.define(version: 2020_12_02_085153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "zip_code"
+    t.string "city"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "street"
+    t.string "department"
+    t.string "department_code"
+    t.string "country"
+    t.string "country_code"
+    t.float "lat"
+    t.float "lng"
+    t.bigint "garden_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_addresses_on_garden_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "message_contact"
+    t.bigint "guest_id"
+    t.bigint "host_id"
+    t.bigint "garden_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_appointments_on_garden_id"
+    t.index ["guest_id"], name: "index_appointments_on_guest_id"
+    t.index ["host_id"], name: "index_appointments_on_host_id"
+  end
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "orientation"
+    t.string "floor_type"
+    t.boolean "is_available"
+    t.boolean "parking"
+    t.boolean "tools_available"
+    t.integer "surface"
+    t.string "image_url"
+    t.bigint "user_id"
+    t.bigint "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_gardens_on_address_id"
+    t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,6 +71,10 @@ ActiveRecord::Schema.define(version: 2020_12_01_153016) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
