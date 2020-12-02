@@ -1,0 +1,2 @@
+class GuestMailer < ApplicationMailer
+end
