@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
 
-    def show
-    @user = User.find(current_user.id)
-    end
+  def show
+  @user = User.find(current_user.id)
+  end
 
   def create
     flash[:notice] = "Registration needed"
@@ -24,6 +24,8 @@ class UsersController < ApplicationController
       render :edit
     end 
   end
+
+  
 
 
 end
