@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<p>Bienvenue chez Coup de pousse !</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Nous vous remercions pour votre inscription !
+<br>Avant de rejoindre notre communauté de petites pousses, merci de confirmer votre inscription en cliquant sur le lien suivant :</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Confirmer mon inscription', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>À tout de suite !</p>
+
+<p>L'équipe Coup de pousse !</p>
