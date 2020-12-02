@@ -2,11 +2,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 img {
-      display: inline-block;
       position: relative;
       height: 200px;
+      width: 200px;
       overflow: hidden;
       border-radius: 50%;
+      object-fit: cover;
 }
 </style>
 </head>
@@ -15,16 +16,19 @@ img {
 <center>
 <br>
 <h1>Mon profil<h1>
-
+<br>
 <!--Avatar-->
-<%if @user.avatar.attached?%>
-  
-  <img ><%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture' %>
+      <%if @user.avatar.attached?%>
 
-<%else%>
-  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-<%end%>
+      <img <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture' %>
 
+      <%else%>
+
+      <img src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+
+      <%end%>
+
+<br>
 <div class="card-body">
       <h6 class="font-weight-light">Prénom : <p class="text-secondary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
       <h6 class="font-weight-light">Nom : <p class="text-secondary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
