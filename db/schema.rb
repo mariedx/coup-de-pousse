@@ -48,10 +48,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_173402) do
     t.string "country_code"
     t.float "lat"
     t.float "lng"
-    t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_addresses_on_garden_id"
   end
 
   create_table "appointments", force: :cascade do |t|
@@ -104,14 +102,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_173402) do
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     t.string "description", default: ""
     t.string "tools", default: ""
->>>>>>> 41fb37c551d474a51fb053a2e0ebe147089d2599
->>>>>>> c97ddc88a2b8e4c588ec5af916c551a60d568b91
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
