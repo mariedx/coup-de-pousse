@@ -1,7 +1,7 @@
 <nav class="nav">
   <div class="container">
     <div class="logo">
-        <a href="#">Your Logo</a>
+        <a <%= link_to "COUP DE POUSSE", root_path %></a>
     </div>
 
     <div id="mainListDiv" class="main_list">
@@ -11,7 +11,7 @@
         <li><a <%= link_to "S'inscrire", new_user_registration_path, :class => "nav-item nav-link" %></a></li>
       <% else %>
         <li><a <%= link_to "Mon profil", user_path(current_user), :class => "nav-item nav-link" %></a></li>
-        <li><a <%= link_to "Se déconnecter", root_path, :class => "nav-item nav-link" %></a></li>
+        <li><a <%= link_to "Se déconnecter", destroy_user_session_path, :class => "nav-item nav-link",  :method => 'DELETE' %></a></a></li>
       <% end %>
       </ul>
     </div>
@@ -27,6 +27,8 @@
 <section class="home">
 </section>
 <div style="height: 1000px">
+
+<br><br><br><br><br>
 
 <!-- Jquery needed -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

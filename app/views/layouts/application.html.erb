@@ -13,7 +13,13 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+
+    <% if content_for? :nav %>
+      <%= content_for :nav %>
+    <% else %>
+      <%= render 'layouts/nav' %>
+    <% end %>
+
     <%= yield %>
     <%= render 'layouts/footer' %>
   

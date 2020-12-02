@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
 
-    def show
+  def show
     @user = User.find(current_user.id)
-    end
+  end
+
+  def dashboard
+    @user = User.find(current_user.id)
+  end
 
   def create
     flash[:notice] = "Registration needed"
   end
 
-  
   def edit
     @user = current_user
   end
@@ -22,12 +25,14 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = "Impossible d'éditer le profil :"
       render :edit
-    end 
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :avatar, :description, :tools)
   end
+
+
 
 end
