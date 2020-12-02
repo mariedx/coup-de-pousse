@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     flash[:notice] = "Registration needed"
   end
 
-
   def edit
     @user = current_user
   end
