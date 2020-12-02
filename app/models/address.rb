@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-    belongs_to :garden
+  belongs_to :garden
 end
