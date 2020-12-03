@@ -1,5 +1,4 @@
 class AppointmentsController < ApplicationController
-  before_action :authenticate_user
 
   def new
     @appointment = Appointment.new
@@ -15,13 +14,12 @@ class AppointmentsController < ApplicationController
 
   def create
 
-    @garden = Garden.find(params[:id])
-    @host = @garden.user
-    @guest = current_user
+    @appointment = Appointment.new(app_params)
+    @appointment.garden = Garden.find(1)
+    @appointment.host = Garden.find(1).user
+    @appointment.guest = current_user
 
-    @appointment = Appointment.new(app_params, garden: @garden, host: @host, guest: @guest)
-
-    if @appointment.after_save
+    if @appointment.save
       redirect_to appointment_path(@appointment.id)
       flash[:success] = "Le rendez-vous est pris !"
     else
@@ -30,11 +28,19 @@ class AppointmentsController < ApplicationController
 
   end
 
+  def destroy
+    Appointment.find(params[:id]).destroy
+    redirect_to root_path
+    flash[:notice] = "Rendez-vous supprimé !"
+
+  end
+
 
   private
 
 
   def app_params
+
     app_params = params.require(:appointment).permit(:start_date, :end_date, :message_contact)
   end
 
