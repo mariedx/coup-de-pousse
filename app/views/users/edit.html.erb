@@ -13,9 +13,20 @@
 
             <div class="form-group">
               <%= f.label :last_name, "Nom" %><br />
-              <%= f.text_field:last_name, class: "form-control" %>
+              <%= f.text_field :last_name, class: "form-control" %>
             </div>
             
+            <div class="form-group">
+              <%= f.label :description, "Description" %><br />
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :description, "Outils" %><br />
+              <%= f.text_field :tools, class: "form-control" %>
+            </div>
+
+
             <div class="form-group">
               <%= f.label :avatar, "Avatar"%><br />
               <%= f.file_field :avatar%>

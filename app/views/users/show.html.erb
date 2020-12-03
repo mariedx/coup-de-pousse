@@ -1,12 +1,41 @@
-<div class="container-flex">
-  <div>
-  <center>
-    <h1>Mon profil<h1>
-    <div class="card-body">
-      <h6 class="font-weight-light">Prénom : <p class="text-secondary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-      <h6 class="font-weight-light">Nom : <p class="text-secondary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  img {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+</style>
+</head>
 
-      <h6 class="font-weight-light">Email: <p class="text-secondary"><%= @user.email %></p>
+<body>
+<div class="container text-center">
+<br>
+<h1>Mon profil<h1>
+<br>
+<!--Avatar-->
+<%if @user.avatar.attached?%>
+
+  <img <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture' %>
+
+<%else%>
+
+  <img src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+
+<%end%>
+
+<br>
+<div class="card-body">
+  <h6 class="font-weight-light">Prénom : <p class="text-secondary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
+  <h6 class="font-weight-light">Nom : <p class="text-secondary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+  <h6 class="font-weight-light">Description : <p class="text-secondary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
+  <h6 class="font-weight-light">Outils : <p class="text-secondary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
+
+  <h6 class="font-weight-light">Email: <p class="text-secondary"><%= @user.email %></p>
 
       <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
       <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
@@ -38,4 +67,10 @@
   </div>
 </div>
 
+
+  <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
+  <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
+</div>
+</div>
+</div>
 
