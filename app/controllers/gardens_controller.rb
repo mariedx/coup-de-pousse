@@ -5,9 +5,8 @@ class GardensController < ApplicationController
   end 
 
   def create
-    @user.id = current_user.id
     @garden = Garden.create(gardens_params)
-
+    @garden.user = current_user
       if @garden.save 
          redirect_to root_path
          flash[:success] = "Annonce créée avec succès !"

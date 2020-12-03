@@ -37,9 +37,6 @@
 
   <h6 class="font-weight-light">Email: <p class="text-secondary"><%= @user.email %></p>
 
-  <%= link_to "Créer une annonce", new_garden_path, class: "btn btn-lg btn-block btn-outline-medium" %>
-
-
   <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
   <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
 </div>
