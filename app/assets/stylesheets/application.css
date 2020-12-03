@@ -805,13 +805,17 @@ html, body {
   color: #B5DECE;
 }
 
-/* Home section */
+/* Home section custom */
 .home-custom {
   width: 100%;
   height: 550px;
   background-image: url(/assets/index.png);;
   background-position-y: 60%;
   background-size:cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Home section */
@@ -820,7 +824,23 @@ html, body {
   height: 80px;
   background-image: url(/assets/index.png);;
   background-position-y: 20%;
-  background-size:cover;
+  background-size:cover;  
+}
+
+.header-title {
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: #FFF;
+  letter-spacing: .1rem;
+}
+
+.welcome-message {
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: #FFF;
+  letter-spacing: .1rem;
 }
 
 .navTrigger {
