@@ -9,6 +9,7 @@
   --info: #b6dece;
   --warning: #f47185;
   --danger: #f0394d;
+  --light-primary: #d4f8f0;
   }
 
 a {
@@ -102,6 +103,46 @@ a {
   border-color: #1d9c7e;
 }
 
+.btn-edition {
+  color: #fff;
+  background-color: #1aae8b;
+  border-color: #1aae8b;
+  width: 250px
+}
+
+.btn-edition:hover {
+  color: #fff;
+  background-color: #1d9c7e;
+  border-color: #1d9c7e;
+  width: 250px
+}
+
+.btn-edition2 {
+  border-color: #1d9c7e;
+  color: #1d9c7e;
+  width: 250px
+}
+
+.btn-edition2:hover {
+  color: #fff;
+  background-color: #1d9c7e;
+  border-color: #1d9c7e;
+  width: 250px
+}
+
+.btn-message {
+  color: #fff;
+  background-color: #085b48;
+  border-color: #085b48;
+  width: 250px
+}
+
+.btn-message:hover {
+  color: #fff;
+  background-color: #1d9c7e;
+  border-color: #1d9c7e;
+  width: 250px
+}
 .btn-success:focus, .btn-success.focus {
   color: #fff;
   background-color: #1d9c7e;
@@ -881,6 +922,28 @@ html, body {
     display: block;
   }
 }
+
+/* Dashboard section */
+
+avatar {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bg-secondary-light {
+  background-color: #ffe3e1 !important;
+  border-radius: 10px;
+}
+
+.bg-light-primary {
+  background-color: #faf9f9;
+  border-radius: 10px;
+}
+
 
 /* Animation */
 .navTrigger {
