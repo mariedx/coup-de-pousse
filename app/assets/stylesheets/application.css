@@ -9,6 +9,7 @@
   --info: #b6dece;
   --warning: #f47185;
   --danger: #f0394d;
+  --light-primary: #d4f8f0;
   }
 
 a {
@@ -901,6 +902,29 @@ html, body {
     display: block;
   }
 }
+
+/* Dashboard section */
+
+
+.avatar {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bg-secondary-light {
+  background-color: #ffe3e1 !important;
+  border-radius: 10px;
+}
+
+.bg-light-primary {
+  background-color: #faf9f9;
+  border-radius: 10px;
+}
+
 
 /* Animation */
 .navTrigger {
