@@ -10,8 +10,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
 
-  def to_param
-    first_name
-  end
+  
 
 end

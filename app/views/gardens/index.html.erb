@@ -3,50 +3,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 
-<head>
-  <style>
-  .card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-  }
-  </style>
-</head>
 <% content_for :nav, render('layouts/custom_nav') %>
 
-<br> <br> <br> <br> <br>
+<!--Tree col -->
+<div class="container text-center">
 
-<div class="container myP">
-<center>
-  <h1>Nos petits jardinets d'amour</h1>
-</div>
-<br>
-<br><br><br>
+  <h2 class="mt-4">Donner ou recevoir un coup de pousse</h2>
 
+  <div class="row coltop mt-3">
+    <div class="col-lg-4 my-5">
+      <img src="assets/sot.png" class="card-img-1" alt="sot">
+      <h4 class="my-5 mx-3">S'inscrire et compléter son profil</h4>
+      <p class="my-4 mx-4">Inscrivez-vous gratuitement pour proposer une annonce de pret de jaridn ou pour rechercher un jardin d'accueil à proximité de chez vous.</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 my-5">
+      <img src="assets/gants.png" class="card-img-2" alt="gants">
+      <h4 class="my-5 mx-3">Rencontrer des jardinniers</h4>
+      <p class="my-4 mx-4">Echangez avec les propriétaires de jardin ou les jardiniers en recherche près de chez vous, proposez une date de rendez-vous et rencontrez-vous !</p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 my-5">
+      <img src="assets/brouette.png" class="card-img-3" alt="brouette">
+      <h4 class="my-5 mx-3">Cultiver et partager les récoltes</h4>
+      <p class="my-4 mx-4">Passez un moment convivial avec des jardiniers autour de chez vous, profitez de la nature, cultivez et partagez vos récoltes.</p>
+    </div><!-- /.col-lg-4 -->
+  </div>
 
-<!-- Page Home Index -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
+  <br><br>
+  <h2>Nos petits jardinets d'amour</h2>
+  <br><br>
 
-      <!--Cards -->
-      <div class="row">
-       <% @gardens.each_with_index do |garden, i| %>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="<%= "#" %>"><%= garden.title %></a>
-                </h4>
-                <h5><%= garden.surface %> m2</h5>
-                <p class="card-text"><%= garden.description %></p>
-                <%= link_to "En savoir plus", class: "btn btn-lg btn-block btn-outline-medium" %>
-              </div>
-            </div>
+  <!--Cards -->
+  <div class="row text-left">
+    <% @gardens.each_with_index do |garden, i| %>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="<%= "#" %>"><%= garden.title %></a>
+            </h4>
+            <h5><%= garden.surface %> m2</h5>
+            <p class="card-text"><%= garden.description %></p>
+            <%= link_to "En savoir plus", class: "btn btn-lg btn-block btn-outline-medium" %>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
