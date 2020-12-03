@@ -836,19 +836,6 @@ html, body {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-/* Dashboard */
-
-.container-flex {
-  display: flex;
-  justify-content: space-around;
-}
-
-.container-flex > div {
-  background-color: #f1f1f1;
-  margin: 30px;
-  padding: 40px;
-  font-size: 30px;
-}
 
 /* Media qurey section */
 @media screen and (min-width: 768px) and (max-width: 1024px) {

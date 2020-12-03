@@ -11,38 +11,39 @@
   }
 </style>
 </head>
-
 <body>
-<div class="container text-center">
-<br>
-<h1>Mon profil<h1>
-<br>
-<!--Avatar-->
-<%if @user.avatar.attached?%>
-
-  <img <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture' %>
-
-<%else%>
-
-  <img src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-
-<%end%>
-
-<br>
-<div class="card-body">
-  <h6 class="font-weight-light">Prénom : <p class="text-secondary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-  <h6 class="font-weight-light">Nom : <p class="text-secondary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-  <h6 class="font-weight-light">Description : <p class="text-secondary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
-  <h6 class="font-weight-light">Outils : <p class="text-secondary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
-
-  <h6 class="font-weight-light">Email: <p class="text-secondary"><%= @user.email %></p>
-
-      <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
-      <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
-    </div>
-
-  <div>
+<div class="row">
+  <div class="col-lg-3 col-md-6 mb-4 bg-secondary">
   <center>
+    <br>
+    <h1>Mon profil<h1>
+      <br>
+      <!--Avatar-->
+      <%if @user.avatar.attached?%>
+
+        <img <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture' %>
+
+        <%else%>
+
+        <img src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+
+      <%end%>
+      <br>
+    <div class="card-body">
+      <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
+      <h6 class="font-weight-light">Nom : <p class="text-primary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+      <h6 class="font-weight-light">Description : <p class="text-primary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
+      <h6 class="font-weight-light">Outils : <p class="text-primary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
+
+      <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
+
+          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
+          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-6 mb-4">
+    <center>
       <br>
       <h1> Mon dashboard </h1>
       <br><br>
@@ -54,7 +55,7 @@
         <br>
   </div>
 
-  <div>
+  <div class="col-lg-3 col-md-6 mb-4">
     <center>
     <br>
     <h1> Mon dashboard </h1>
@@ -67,10 +68,6 @@
   </div>
 </div>
 
-
-  <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
-  <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
-</div>
 </div>
 </div>
 
