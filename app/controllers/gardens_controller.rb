@@ -16,9 +16,6 @@ class GardensController < ApplicationController
       end
   end
 
-  def show
-    @garden = Garden.find(params[:id])
-  end
 
   def index
     @gardens = Garden.all
@@ -31,5 +28,9 @@ class GardensController < ApplicationController
   end
 
 
+  def show
+    @garden = Garden.find(params[:id])
+    @user = @garden.user
+  end
 end
 
