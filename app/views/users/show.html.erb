@@ -1,31 +1,18 @@
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  img {
-    position: relative;
-    height: 200px;
-    width: 200px;
-    overflow: hidden;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-</style>
-</head>
-<body>
+
+<div class="container">
 <div class="row">
-  <div class="col-lg-3 col-md-6 mb-4 bg-light-primary">
-  <center>
+  <div class="col-lg-3 col-md-6 mb-4 bg-light-primary text-center">
     <br>
     <h2>Mon profil<h2>
       <br>
       <!--Avatar-->
       <%if @user.avatar.attached?%>
 
-        <img class="avatar-image" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture' %>
+        <img class="avatar" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture'%>
 
         <%else%>
 
-        <img src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+        <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
 
       <%end%>
       <br>
@@ -34,15 +21,14 @@
       <h6 class="font-weight-light">Nom : <p class="text-primary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
       <h6 class="font-weight-light">Description : <p class="text-primary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
       <h6 class="font-weight-light">Outils : <p class="text-primary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
-
       <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
-
-          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-edition" %>
-          <br><br>
-          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-edition2" %>
-          <br><br>
-          <button class="btn btn-message"> Accéder à mes messages </button>
     </div>
+
+          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3", :style => "width:250px" %>
+          <br>
+          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3", :style => "width:250px" %>
+          <br>
+          <button class="btn btn-info" style="width:250px"> Accéder à mes messages </button>
   </div>
 
   <div class="col-lg-6 col-md-6 mb-4">
@@ -90,6 +76,7 @@
             </small>
           </div>
   </div>
+</div>
 </div>
 
 <div>
