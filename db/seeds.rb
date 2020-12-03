@@ -40,7 +40,7 @@ pictures_array = ["https://www.gardendesign.com/pictures/images/600x600Max/lands
     parking: Faker::Boolean.boolean,
     tools_available: Faker::Boolean.boolean,
     surface: Faker::Number.between(from: 10, to: 300),
-    image_url: pictures_array[rand(pictures_array.length+1)],
+    image_url: pictures_array[rand(pictures_array.length)],
     user_id: User.ids.sample,
     address_id: Address.ids.sample
 )

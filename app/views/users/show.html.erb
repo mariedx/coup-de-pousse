@@ -1,9 +1,8 @@
-<center>
-<br>
-<h1>Mon profil<h1>
-
-
-<div class="card-body">
+<div class="container-flex">
+  <div>
+  <center>
+    <h1>Mon profil<h1>
+    <div class="card-body">
       <h6 class="font-weight-light">Prénom : <p class="text-secondary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
       <h6 class="font-weight-light">Nom : <p class="text-secondary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
 
@@ -11,7 +10,32 @@
 
       <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success" %>
       <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-outline-success" %>
+    </div>
+
+  <div>
+  <center>
+      <br>
+      <h1> Mon dashboard </h1>
+      <br><br>
+
+        <button type="button" class="btn btn-primary btn-lg">Ajouter mon jardin </button>
+        <br>
+        <h4> Mes annonces </h4>
+        <br>
+        <br>
+  </div>
+
+  <div>
+    <center>
+    <br>
+    <h1> Mon dashboard </h1>
+    <br><br>
+
+      <button type="button" class="btn btn-primary btn-lg">Ajouter mon jardin </button>
+      <button type="button" class="btn btn-secondary btn-lg">Chercher un jardin </button>
+      <br>
+      <br>
+  </div>
 </div>
 
-<center>
- 
+
