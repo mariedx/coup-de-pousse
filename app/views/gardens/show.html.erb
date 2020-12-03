@@ -15,13 +15,15 @@
       <p>Type de sol : <%= @garden.floor_type %></p>
       <p>Outils disponibles : <% if @garden.tools_available %> <%= "Oui" %> <% else %> <%= "Non" %> <% end %></p>
       <p>Parking : <% if @garden.parking %> <%= "Possibilité de se garer" %> <% else %> <%= "Pas d'emplacement pour se garer" %> <% end %></p>
-      <button href="<%= user_path(@user.id) %>" class="btn btn-outline-primary mt-2">Profil propriétaire</button>
+      <a href="<%= user_path(@user.id) %>" class="btn btn-outline-primary mt-2">Profil propriétaire</a>
     </div>
   </div>
 
  <!--Contact host -->
   <br><br>
   <hr>
+
+  <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter le propriétaire</a>
 
   <h5 class="my-4"> Contacter le propriétaire</h5>
   <div class="form-contact mx-5 mb-5">
