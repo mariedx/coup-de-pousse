@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 2020_12_02_173402) do
     t.string "country_code"
     t.float "lat"
     t.float "lng"
+    t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_addresses_on_garden_id"
   end
 
   create_table "appointments", force: :cascade do |t|
