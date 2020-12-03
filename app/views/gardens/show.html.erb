@@ -12,9 +12,9 @@
       <br>
       <p>Surface : <%= @garden.surface %></p>
       <p>Orientation : <%= @garden.orientation %></p>
-      <p>Type de sol :<%= @garden.floor_type %></p>
-      <p>Outils disponibles : <%= @garden.tools_available %></p>
-      <p>Parking : <%= @garden.parking %></p>
+      <p>Type de sol : <%= @garden.floor_type %></p>
+      <p>Outils disponibles : <% if @garden.tools_available %> <%= "Oui" %> <% else %> <%= "Non" %> <% end %></p>
+      <p>Parking : <% if @garden.parking %> <%= "Possibilité de se garer" %> <% else %> <%= "Pas d'emplacement pour se garer" %> <% end %></p>
       <button href="<%= user_path(@user.id) %>" class="btn btn-outline-primary mt-2">Profil propriétaire</button>
     </div>
   </div>
@@ -39,6 +39,7 @@
       <div class="actions">
         <button href="<%= root_path %>" class="btn btn-outline-primary mt-2">Envoyer</button>
       </div>
+
     </form>
   </div>
 </div>
