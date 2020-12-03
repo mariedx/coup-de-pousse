@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :host, foreign_key: "host_id", class_name: "Appointment"
   has_one_attached :avatar
 
+
+  
+
 end
