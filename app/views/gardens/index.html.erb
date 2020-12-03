@@ -32,19 +32,21 @@
   <h2>Nos petits jardinets d'amour</h2>
   <br><br>
 
+
+href="<%=  %>"
   <!--Cards -->
   <div class="row text-left">
     <% @gardens.each_with_index do |garden, i| %>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
+          <a href="<%= garden_path(garden) %>"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="<%= "#" %>"><%= garden.title %></a>
+              <a href="<%= garden_path(garden) %>"><%= garden.title %></a>
             </h4>
             <h5><%= garden.surface %> m2</h5>
             <p class="card-text"><%= garden.description %></p>
-            <%= link_to "En savoir plus", class: "btn btn-lg btn-block btn-outline-medium" %>
+            <%= link_to "En savoir plus", garden_path(garden) %>
           </div>
         </div>
       </div>
