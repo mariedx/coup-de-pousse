@@ -12,6 +12,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :country_code
       t.float :lat
       t.float :lng
+      t.belongs_to :garden, index: true
 
       t.timestamps
     end

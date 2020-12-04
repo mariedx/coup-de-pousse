@@ -19,11 +19,15 @@ Garden.destroy_all
   user.skip_confirmation!
   user.save!
 end
+tp User.all
 
 
 20.times do
-  Address.create!(city: Faker::Address.city, zip_code: Faker::Address.zip_code)
+  Address.create!(
+    city: ["Paris", "La-Celle-Saint-Cloud", "Saint-Gervais"].sample, 
+    zip_code: Faker::Address.zip_code)
 end
+tp Address.all
 
 pictures_array = ["https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/dwarf-shrubs-land-morphology_11506.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/red-brick-path-foliage-daniel-shea-contemporary-garden-design_10137.jpg","https://i2.wp.com/jardinfute.com/wp-content/uploads/2019/06/carrepotager-1.jpg?resize=696%2C464&ssl=1",
 "https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/design-with-nature_3581.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/living-green-design_3636.jpg", "https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/oehme-van-sweden-associates-inc_4972.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/hoerr-schaudt_5019.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/garden-diva-designs_5128.jpg","https://i.pinimg.com/originals/43/97/19/4397195be3f5c420eb117dcc6f25a998.jpg","https://ekladata.com/puGijl0elzRI6OPBERGaTIYCplU.jpg",
@@ -47,8 +51,10 @@ pictures_array = ["https://www.gardendesign.com/pictures/images/600x600Max/lands
 end
 
 sharingcond = ["Potager","Entretien du jardin","Planter des fleurs"]
+tp Garden.all 
 
 Category.create(sharing_conditions: sharingcond[rand(sharingcond.length+1)])
+tp Category.all 
 
 20.times do
   GardenCategory.create!(
@@ -56,3 +62,5 @@ Category.create(sharing_conditions: sharingcond[rand(sharingcond.length+1)])
     category_id: Category.ids.sample
   )
 end
+
+tp GardenCategory.all
