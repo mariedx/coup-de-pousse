@@ -53,8 +53,9 @@
             </h4>
             <h5><%= garden.surface %> m2</h5>
             <p class="card-text"><%= garden.description %></p>
-            <%= link_to "En savoir plus", garden_path(garden) %>
-          </div>
+            <a href="<%= garden_path(garden) %>"><button type="button" garden_path(garden) class="btn btn-primary">En savoir plus</button></a>
+            </div>
+            <p class ="text-right mr-4"><%= garden.favorites.count %> <%= (garden.favorites.count) == 1 ? '👍' : '👍'%></p>
         </div>
       </div>
     <% end %>

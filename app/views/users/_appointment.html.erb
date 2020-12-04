@@ -8,6 +8,6 @@
         <small class="d-block text-right mt-3">
 </div>
 
-  <%= link_to "Voir le RDV", appointment_path(app.id), :class => "link" %>
+  <%= link_to "Voir le RDV", garden_appointment_path(app.garden.id, app.id), :class => "link" %>
 
 <%end%>

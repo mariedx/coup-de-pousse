@@ -34,15 +34,16 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    @garden = Garden.find(params[:garden_id])
     @appointment = Appointment.find(params[:id])
-
   end
 
   def update
     @appointment = Appointment.find(params[:id])
     if @appointment.update(app_params)
-      redirect_to appointment_path(@appointment.id)
       flash[:notice] = "Rendez-vous modifié !"
+      redirect_to garden_appointment_path(@appointment.garden.id, @appointment.id)
+
     else
       flash.now[:alert] = "Impossible de modifier le rendez-vous :"
       render :edit
@@ -51,7 +52,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     Appointment.find(params[:id]).destroy
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
     flash[:notice] = "Rendez-vous supprimé !"
 
   end
