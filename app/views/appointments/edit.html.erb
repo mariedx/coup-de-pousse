@@ -10,11 +10,23 @@
   </div>
 <% end %>
 
+
+<% if @appointment.errors.any? %>
+  <div class="alert alert-danger text-center" role="alert">
+    <p>Nous n'avons pas réussi à créer le rendez-vous pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+    <% @appointment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
-    <%= form_with(model: @appointment, local: true) do |form| %>
+    <%= form_with(model: [@garden, @appointment], local: true) do |form| %>
 
       <div class="form-group">
         <%= form.label :start_time ,"Quand voulez-vous vous rendre chez votre hôte ?" %>
@@ -32,7 +44,7 @@
       </div>
 
         <div class="actions mt-5">
-        <%= form.submit "C'est parti !", class: "btn btn-lg btn-primary btn-block" %>
+        <%= form.submit "C'est parti !", class: "btn btn-lg btn-primary btn-block"%>
       </div>
     <% end %>
   </div>
