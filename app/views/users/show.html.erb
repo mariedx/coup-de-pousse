@@ -1,5 +1,34 @@
+<% if current_user.id != @user.id  %>
+<div class="container mt-5 mb-5 bg-light-primary text-center"">
+  <br>
+  <h2>Profil<h2>
+  <br>
+  <%if @user.avatar.attached?%>
+  <br>
 
-<div class="container">
+
+          <img class="avatar" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture'%>
+
+          <%else%>
+
+          <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+
+        <%end%>
+        <br>
+      <div class="card-body">
+        <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if @user.first_name != nil%> <%= @user.first_name%></p> <% end%>
+        <h6 class="font-weight-light">Nom : <p class="text-primary"><% if @user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+        <h6 class="font-weight-light">Description : <p class="text-primary"><% if @user.description != nil%> <%= @user.description%></p> <% end%>
+        <h6 class="font-weight-light">Outils : <p class="text-primary"><% if @user.tools != nil%> <%= @user.tools%></p> <% end%>
+        <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
+      </div>
+      <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter</a>
+      <br><br>
+  </div>
+
+
+<% else %>
+<div class="container mt-5 mb-5">
 <div class="row">
   <div class="col-lg-3 col-md-6 mb-4 bg-light-primary text-center">
     <br>
@@ -24,11 +53,10 @@
       <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
     </div>
 
-          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3", :style => "width:250px" %>
+          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3", :style => "width:230px" %>
           <br>
-          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3", :style => "width:250px" %>
+          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3", :style => "width:230px" %>
           <br>
-          <button class="btn btn-info" style="width:250px"> Accéder à mes messages </button>
   </div>
 
   <div class="col-lg-6 col-md-6 mb-4">
@@ -37,13 +65,28 @@
       <h2> Informations </h2>
       <br><br>
 
-      <a href="http://localhost:3000/gardens/new"><button type="button" new_garden_path class="btn btn-primary btn-lg">Ajouter mon jardin </button></a> 
+      <a href="<%= new_garden_path %>"><button type="button" new_garden_path class="btn btn-primary btn-lg">Ajouter mon jardin </button></a>
 
-        <br><br><br><br><br><br><br><br>
-        <h4> Mon annonce </h4>
-        <br>
-        <br>
-  </div>
+        <br><br><br><br><br><br>
+        <div class="container">
+          <h4> Mes annonces </h4>
+          <br><br>
+          <% @gardens.each_with_index do |garden, i| %>
+        <div class="card h-100 w-55">
+          <img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" >
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= garden.title %></a>
+            </h4>
+            <h5><%= garden.surface %> m2</h5>
+            <p class="card-text"><%= garden.description %></p>
+            <br>
+            <a href="<%= edit_garden_path %>"><button type="button" edit_garden_path class="btn btn-secondary">Editer mon annonce </button></a>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
 
   <div class="col-lg-3 col-md-6 mb-4 bg-secondary-light">
     <br>
@@ -84,5 +127,5 @@
   <center>
     <h2> Mes favoris </h2>
 </div>
-
+<%end%>
 

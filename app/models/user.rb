@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
 
-  
+  def to_param
+    [id, first_name.parameterize].join("-")
+  end
 
 end

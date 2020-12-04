@@ -1,5 +1,87 @@
-/* personalised theme */
+html, body {
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Dashboard section */
+.avatar {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bg-secondary-light {
+  background-color: #ffe3e1 !important;
+  border-radius: 10px;
+}
+
+.bg-light-primary {
+  background-color: #faf9f9;
+  border-radius: 10px;
+}
+
+/* Index Garden Home Page */
+.jumbotron {
+  height: 600px;
+  background-image: url(https://images.pexels.com/photos/1078058/pexels-photo-1078058.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-position-y: 35%;
+  opacity: .8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  text-align: center;
+  font-weight: 800;
+  margin-left: 20%;
+  margin-right: 20%;
+  color: #FFF;
+  letter-spacing: .1rem;
+}
+
+.welcome-message {
+  text-align: center;
+  font-weight: 600;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: #FFF;
+  letter-spacing: .1rem;
+}
+
+.coltop  {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+/* Show garden */
+.card-img-show {
+  width: 500px; 
+  height: 400px;
+  object-fit: cover;
+}
+
+
+
+
+
+/* personalised theme */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 :root {
 
@@ -734,430 +816,4 @@ a.text-danger:hover, a.text-danger:focus {
 .alert-warning > th,
 .alert-warning > td {
   background-color: #f47185;
-}
-
-html, body {
-  background-color: #FFFFFF;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* _nav */
-
-
-/* _custom_nav (home page) */
-/* Navbar section */
-.nav {
-  width: 100%;
-  height: 65px;
-  position: fixed;
-  line-height: 65px;
-  text-align: center;
-  z-index:300;
-}
-
-.nav div.logo {
-  float: left;
-  width: auto;
-  height: auto;
-  padding-left: 3rem;
-}
-
-.nav div.logo a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.7rem;
-}
-
-.nav div.logo a:hover {
-  color: #B5DECE;
-}
-
-.nav div.main_list {
-  height: 65px;
-  float: right;
-}
-
-.nav div.main_list ul {
-  width: 100%;
-  height: 65px;
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav div.main_list ul li {
-  width: auto;
-  height: 65px;
-  padding: 0;
-  padding-right: 3rem;
-}
-
-.nav div.main_list ul li a {
-  text-decoration: none;
-  color: #fff;
-  line-height: 65px;
-  font-size: 1.3rem;
-}
-
-.nav div.main_list ul li a:hover {
-  color: #B5DECE;
-}
-
-/* Home section custom */
-.home-custom {
-  width: 100%;
-  height: 550px;
-  background-image: url(/assets/index.png);;
-  background-position-y: 60%;
-  background-size:cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Home section */
-.home {
-  width: 100%;
-  height: 80px;
-  background-image: url(/assets/index.png);;
-  background-position-y: 20%;
-  background-size:cover;  
-}
-
-.header-title {
-  text-align: center;
-  margin-left: 25%;
-  margin-right: 25%;
-  color: #FFF;
-  letter-spacing: .1rem;
-}
-
-.welcome-message {
-  text-align: center;
-  margin-left: 25%;
-  margin-right: 25%;
-  color: #FFF;
-  letter-spacing: .1rem;
-}
-
-.navTrigger {
-  display: none;
-}
-
-.nav {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-
-/* Media qurey section */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .container {
-    margin: 0;
-  }
-}
-
-@media screen and (max-width:768px) {
-  .navTrigger {
-    display: block;
-  }
-  .nav div.logo {
-    margin-left: 15px;
-  }
-  .nav div.main_list {
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-  }
-  .nav div.show_list {
-    height: auto;
-    display: none;
-  }
-  .nav div.main_list ul {
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #118;
-    /*same background color of navbar*/
-    background-position: center top;
-  }
-  .nav div.main_list ul li {
-    width: 100%;
-    text-align: right;
-  }
-  .nav div.main_list ul li a {
-    text-align: center;
-    width: 100%;
-    font-size: 1.3rem;
-    padding: 20px;
-  }
-  .nav div.media_button {
-    display: block;
-  }
-}
-
-/* Dashboard section */
-
-
-.avatar {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  overflow: hidden;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.bg-secondary-light {
-  background-color: #ffe3e1 !important;
-  border-radius: 10px;
-}
-
-.bg-light-primary {
-  background-color: #faf9f9;
-  border-radius: 10px;
-}
-
-
-/* Animation */
-.navTrigger {
-  cursor: pointer;
-  width: 30px;
-  height: 25px;
-  margin: auto;
-  position: absolute;
-  right: 30px;
-  top: 0;
-  bottom: 0;
-}
-
-.navTrigger i {
-  background-color: #fff;
-  border-radius: 2px;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 4px;
-}
-
-.navTrigger i:nth-child(1) {
-  -webkit-animation: outT 0.8s backwards;
-  animation: outT 0.8s backwards;
-  -webkit-animation-direction: reverse;
-  animation-direction: reverse;
-}
-
-.navTrigger i:nth-child(2) {
-  margin: 5px 0;
-  -webkit-animation: outM 0.8s backwards;
-  animation: outM 0.8s backwards;
-  -webkit-animation-direction: reverse;
-  animation-direction: reverse;
-}
-
-.navTrigger i:nth-child(3) {
-  -webkit-animation: outBtm 0.8s backwards;
-  animation: outBtm 0.8s backwards;
-  -webkit-animation-direction: reverse;
-  animation-direction: reverse;
-}
-
-.navTrigger.active i:nth-child(1) {
-  -webkit-animation: inT 0.8s forwards;
-  animation: inT 0.8s forwards;
-}
-
-.navTrigger.active i:nth-child(2) {
-  -webkit-animation: inM 0.8s forwards;
-  animation: inM 0.8s forwards;
-}
-
-.navTrigger.active i:nth-child(3) {
-  -webkit-animation: inBtm 0.8s forwards;
-  animation: inBtm 0.8s forwards;
-}
-
-@-webkit-keyframes inM {
-  50% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(45deg);
-  }
-}
-
-@keyframes inM {
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
-}
-
-@-webkit-keyframes outM {
-  50% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(45deg);
-  }
-}
-
-@keyframes outM {
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
-}
-
-@-webkit-keyframes inT {
-  0% {
-    -webkit-transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    -webkit-transform: translateY(9px) rotate(0deg);
-  }
-  100% {
-    -webkit-transform: translateY(9px) rotate(135deg);
-  }
-}
-
-@keyframes inT {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(9px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(9px) rotate(135deg);
-  }
-}
-
-@-webkit-keyframes outT {
-  0% {
-    -webkit-transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    -webkit-transform: translateY(9px) rotate(0deg);
-  }
-  100% {
-    -webkit-transform: translateY(9px) rotate(135deg);
-  }
-}
-
-@keyframes outT {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(9px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(9px) rotate(135deg);
-  }
-}
-
-@-webkit-keyframes inBtm {
-  0% {
-    -webkit-transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    -webkit-transform: translateY(-9px) rotate(0deg);
-  }
-  100% {
-    -webkit-transform: translateY(-9px) rotate(135deg);
-  }
-}
-
-@keyframes inBtm {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-9px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-9px) rotate(135deg);
-  }
-}
-
-@-webkit-keyframes outBtm {
-  0% {
-    -webkit-transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    -webkit-transform: translateY(-9px) rotate(0deg);
-  }
-  100% {
-    -webkit-transform: translateY(-9px) rotate(135deg);
-  }
-}
-
-@keyframes outBtm {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-9px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-9px) rotate(135deg);
-  }
-}
-
-.affix {
-  padding: 0;
-  background-color: #111;
-}
-
-.myH2 {
-	text-align:center;
-	font-size: 4rem;
-}
-.myP {
-	text-align: justify;
-	padding-left:15%;
-	padding-right:15%;
-	font-size: 20px;
-}
-@media all and (max-width:700px){
-	.myP {
-		padding:2%;
-	}
-}
-
-/* Index Garden Home Page */
-
-/* tree col */
-.coltop  {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
-/* Cards garden */
-.card-img-top {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-}
-
-/* Show garden */
-.card-img-show {
-  width: 500px; 
-  height: 400px;
-  object-fit: cover;
 }
