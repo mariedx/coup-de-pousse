@@ -3,9 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @gardens = @user.gardens
-    @favorites = @user.favorites
-    @garden_favorites = Garden.favorites
+    @user_favorites = @user.favorites
+    @garden_favorites = Garden.find_by(@user_favorites)
   end
 
   def create
