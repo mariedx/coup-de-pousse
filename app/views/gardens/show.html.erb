@@ -33,6 +33,9 @@
   <br><br>
   <hr>
 
+  <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
+
+
   <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter le propriétaire</a>
 
   <h5 class="my-4"> Contacter le propriétaire</h5>
