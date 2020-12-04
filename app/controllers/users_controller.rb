@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gardens = @user.gardens
+    @favorites = @user.favorites
+    @garden_favorites = Garden.favorites
   end
 
   def create
