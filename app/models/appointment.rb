@@ -3,14 +3,10 @@ class Appointment < ApplicationRecord
   belongs_to :host, class_name: "User"
   belongs_to :garden
 
-  after_create :new_app_guest, :new_app_host
+  after_create :new_app_guest
 
   def new_app_guest
-    GuestMailer.app_send_email(self).deliver_now
-  end
-
-  def new_app_host
-    HostMailer.app_received_email(self).deliver_now
+    AppointmentMailer.new_app_guest(self).deliver_now
   end
 
 

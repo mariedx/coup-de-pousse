@@ -1,2 +1,0 @@
-class HostMailer < ApplicationMailer
-end
