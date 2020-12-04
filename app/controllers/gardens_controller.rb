@@ -21,12 +21,12 @@ class GardensController < ApplicationController
   end
 
   def index
-    @gardens = Garden.all
+    @gardens = Garden.search(params[:search])
   end
 
   private
   def gardens_params
-    gardens_params = params.require(:garden).permit(:title, :description, :orientation, :floor_type, :is_available, :parking, :tools_available, :surface, :image_url)
+    params.require(:garden).permit(:title, :description, :orientation, :floor_type, :is_available, :parking, :tools_available, :surface, :image_url, :city, :search)
   end
 
 end
