@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :gardens
-  has_many :appointments, through: :gardens
+  has_many :appointments
   has_many :guest, foreign_key: "guest_id", class_name: "Appointment"
   has_many :host, foreign_key: "host_id", class_name: "Appointment"
   has_one_attached :avatar
 
 
-  
+
 
 end
