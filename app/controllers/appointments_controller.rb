@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 
   def new
-    @garden = Garden.find_by id:(params[:garden_id])
+    @garden = Garden.find(params[:garden_id])
     @appointment = Appointment.new
   end
 
@@ -14,10 +14,10 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-
+    @garden = Garden.find(params[:garden_id])
     @appointment = Appointment.new(app_params)
-    @appointment.garden_id = Garden.find(params[:garden_id].to_i)
-    @appointment.host = User.find(1)
+    @appointment.garden = @garden
+    @appointment.host = @garden.user
     @appointment.guest = current_user
 
 
@@ -25,7 +25,7 @@ class AppointmentsController < ApplicationController
     print params[:garden_id]
 
     if @appointment.save
-      redirect_to appointment_path
+      redirect_to appointment_path(@appointment.id)
       flash[:success] = "Le rendez-vous est pris !"
     else
     render :new

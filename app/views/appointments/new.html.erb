@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
-    <%= form_with(model: @appointment, local: true) do |form| %>
+    <%= form_with(model: [@garden, @appointment], local: true) do |form| %>
 
       <div class="form-group">
         <%= form.label :start_time ,"Quand voulez-vous vous rendre chez votre hôte ?" %>
@@ -32,7 +32,7 @@
       </div>
 
         <div class="actions mt-5">
-        <%= form.submit "C'est parti !", class: "btn btn-lg btn-primary btn-block" %>
+        <%= form.submit "C'est parti !", class: "btn btn-lg btn-primary btn-block"%>
       </div>
     <% end %>
   </div>

@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   end
 
   resources :gardens do
-    resources :appointments, only: [:new, :create]
+    resources :appointments, only: [:new, :create, :show]
   end
 
-  resources :appointments, except: [:new]
+  resources :appointments, except: [:create]
 
 end
