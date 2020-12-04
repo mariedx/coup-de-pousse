@@ -810,7 +810,6 @@ html, body {
 .home-custom {
   width: 100%;
   height: 550px;
-  background-image: image-url("index.png");
   background-position-y: 60%;
   background-size:cover;
   display: flex;
@@ -823,7 +822,6 @@ html, body {
 .home {
   width: 100%;
   height: 80px;
-  background-image: image-url("index.png");
   background-position-y: 20%;
   background-size:cover;  
 }
