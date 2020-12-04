@@ -1,0 +1,12 @@
+Hello jeune pousse !
+
+Un futur co-jardinier vous a fait une demande de rendez-vous !
+Date du rendez-vous : <%=@appointment.start_date%>
+Le co-jardinier vous adresse le message suivant :
+"<%=@appointment.message_contact%>"
+N'hésitez pas à consulter <%= link_to "son profil", user_url(@appointment.guest.id)%> !
+
+Vous pouvez modifier ou supprimer ce rendez-vous depuis <%= link_to "votre profil", user_url(@appointment.host.id)%>
+
+
+À bientôt sur Coup de pousse !
