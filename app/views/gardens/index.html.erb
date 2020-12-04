@@ -1,28 +1,37 @@
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<!--Jumbotron -->
+  <div class="jumbotron jumbotron-fluid mt-3">
+    <div class="container banner text-center">
+      <% if current_user != nil %>
+        <h3 class="welcome-message mb-3">Bonjour <%= current_user.first_name %> ! </h3>
+      <% end %>
+        <br>
+        <h2 class="header-title" >Partagez la passion de la terre grâce au cojarinage<h2>
+    </div>
+  </div>
 
-<% content_for :nav, render('layouts/custom_nav') %>
+<!-- Jquery needed -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
 
 <!--Tree col -->
 <div class="container text-center">
-
   <h2 class="mt-4">Donner ou recevoir un coup de pousse</h2>
 
   <div class="row coltop mt-3">
     <div class="col-lg-4 my-5">
-      <img src="assets/sot.png" class="card-img-1" alt="sot">
+      <%= image_tag("sot.png", {:style => "height:100px;"}) %>
       <h4 class="my-5 mx-3">S'inscrire et compléter son profil</h4>
       <p class="my-4 mx-4">Inscrivez-vous gratuitement pour proposer une annonce de pret de jaridn ou pour rechercher un jardin d'accueil à proximité de chez vous.</p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4 my-5">
-      <img src="assets/gants.png" class="card-img-2" alt="gants">
+      <%= image_tag("gants.png", {:style => "height:100px;"}) %>
       <h4 class="my-5 mx-3">Rencontrer des jardinniers</h4>
       <p class="my-4 mx-4">Echangez avec les propriétaires de jardin ou les jardiniers en recherche près de chez vous, proposez une date de rendez-vous et rencontrez-vous !</p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4 my-5">
-      <img src="assets/brouette.png" class="card-img-3" alt="brouette">
+      <%= image_tag("brouette.png", {:style => "height:100px;"}) %>
       <h4 class="my-5 mx-3">Cultiver et partager les récoltes</h4>
       <p class="my-4 mx-4">Passez un moment convivial avec des jardiniers autour de chez vous, profitez de la nature, cultivez et partagez vos récoltes.</p>
     </div><!-- /.col-lg-4 -->
@@ -37,14 +46,14 @@
     <% @gardens.each_with_index do |garden, i| %>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
+          <a href="<%= garden_path(garden) %>"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="<%= "#" %>"><%= garden.title %></a>
+              <a href="<%= garden_path(garden) %>"><%= garden.title %></a>
             </h4>
             <h5><%= garden.surface %> m2</h5>
             <p class="card-text"><%= garden.description %></p>
-            <%= link_to "En savoir plus", class: "btn btn-lg btn-block btn-outline-medium" %>
+            <%= link_to "En savoir plus", garden_path(garden) %>
           </div>
         </div>
       </div>

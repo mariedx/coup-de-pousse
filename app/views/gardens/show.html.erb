@@ -1,0 +1,50 @@
+<div class="container text-center mt-5 mb-5">
+  <h5 class="mb-5"> <%= @garden.title %> </h5>
+
+  <!--Show garden -->
+  <div class="row row-top">
+    <div class="col-md-6">
+      <img class="card-img-show"  src="<%= @garden.image_url %>">
+    </div>
+    <div class="col-md-6 mt-3 text-left">
+      <h5>Description :</h5>
+      <h6><%= @garden.description %></h6>
+      <br>
+      <p>Surface : <%= @garden.surface %></p>
+      <p>Orientation : <%= @garden.orientation %></p>
+      <p>Type de sol : <%= @garden.floor_type %></p>
+      <p>Outils disponibles : <% if @garden.tools_available %> <%= "Oui" %> <% else %> <%= "Non" %> <% end %></p>
+      <p>Parking : <% if @garden.parking %> <%= "Possibilité de se garer" %> <% else %> <%= "Pas d'emplacement pour se garer" %> <% end %></p>
+      <a href="<%= user_path(@user.id) %>" class="btn btn-outline-primary mt-2">Profil propriétaire</a>
+    </div>
+  </div>
+
+ <!--Contact host -->
+  <br><br>
+  <hr>
+
+  <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
+
+
+  <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter le propriétaire</a>
+
+  <h5 class="my-4"> Contacter le propriétaire</h5>
+  <div class="form-contact mx-5 mb-5">
+    <form>
+       <div class="form-group">
+        <label for="exampleFormControlTextarea1">Objet</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Message</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="actions">
+        <button href="<%= root_path %>" class="btn btn-outline-primary mt-2">Envoyer</button>
+      </div>
+
+    </form>
+  </div>
+</div>
