@@ -3,10 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def dashboard
-    @user = User.find(current_user.id)
+    @gardens = @user.gardens
   end
 
   def create
