@@ -28,6 +28,22 @@ class AppointmentsController < ApplicationController
 
   end
 
+  def edit
+    @appointment = Appointment.find(params[:id])
+
+  end
+
+  def update
+    @appointment = Appointment.find(params[:id])
+    if @appointment.update(app_params)
+      redirect_to appointment_path(@appointment.id)
+      flash[:notice] = "Rendez-vous modifié !"
+    else
+      flash.now[:alert] = "Impossible de modifier le rendez-vous :"
+      render :edit
+    end
+  end
+
   def destroy
     Appointment.find(params[:id]).destroy
     redirect_to root_path
