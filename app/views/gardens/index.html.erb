@@ -1,11 +1,22 @@
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<!--Jumbotron -->
+  <div class="jumbotron jumbotron-fluid mt-3">
+    <div class="container banner text-center">
+      <% if current_user != nil %>
+        <h3 class="welcome-message mb-3">Bonjour <%= current_user.first_name %> ! </h3>
+      <% end %>
+        <br>
+        <h2 class="header-title" >Partagez la passion de la terre grâce au cojarinage<h2>
+    </div>
+  </div>
+
+<!-- Jquery needed -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
 
 <!--Tree col -->
 <div class="container text-center">
-
   <h2 class="mt-4">Donner ou recevoir un coup de pousse</h2>
 
   <div class="row coltop mt-3">
