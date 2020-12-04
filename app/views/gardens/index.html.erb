@@ -9,11 +9,6 @@
     </div>
   </div>
 
-<!-- Jquery needed -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="js/scripts.js"></script>
-
-
 
 <!--Tree col -->
 <div class="container text-center">
@@ -41,6 +36,18 @@
   <h2>Nos petits jardinets d'amour</h2>
   <br><br>
 
+ <!--Filter -->
+  <h3>Rechercher par ville :</h3>
+  <p>(Paris, Saint-Gervais ou La-Celle-Saint-Cloud, les précurseurs :&#128540;)</p>
+  <div class = 'form-group'>
+    <%= form_tag(gardens_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search])%>
+    <%= submit_tag ("Rechercher"), class: "btn  btn-outline-primary " %>
+    <% end %>
+  </div>
+
+  <br><br>
+
   <!--Cards -->
   <div class="row text-left">
     <% @gardens.each_with_index do |garden, i| %>
@@ -53,6 +60,9 @@
             </h4>
             <h5><%= garden.surface %> m2</h5>
             <p class="card-text"><%= garden.description %></p>
+            <a href="<%= garden_path(garden) %>"><button type="button" garden_path(garden) class="btn btn-primary">En savoir plus</button></a>
+            <p class ="text-right mr-4"><%= garden.favorites.count %> <%= (garden.favorites.count) == 1 ? '👍' : '👍'%></p>
+            <p class="card-text"><%= garden.address.city %></p>
             <%= link_to "En savoir plus", garden_path(garden) %>
           </div>
         </div>

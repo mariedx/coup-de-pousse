@@ -1,18 +1,19 @@
 class GardensController < ApplicationController
 
-  def new 
+  def new
     @garden = Garden.new
-  end 
+  end
 
   def show
     @garden = Garden.find(params[:id])
     @user = @garden.user
+
   end
 
   def create
     @garden = Garden.create(gardens_params)
     @garden.user = current_user
-      if @garden.save 
+      if @garden.save
         redirect_to root_path
         flash[:success] = "Annonce créée avec succès !"
       else
@@ -21,12 +22,13 @@ class GardensController < ApplicationController
   end
 
   def index
-    @gardens = Garden.all
+    @gardens = Garden.search(params[:search])
   end
 
   private
+
   def gardens_params
-    gardens_params = params.require(:garden).permit(:title, :description, :orientation, :floor_type, :is_available, :parking, :tools_available, :surface, :image_url)
+    params.require(:garden).permit(:title, :description, :orientation, :floor_type, :is_available, :parking, :tools_available, :surface, :image_url, :city, :search)
   end
 
 end
