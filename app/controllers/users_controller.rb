@@ -4,7 +4,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gardens = @user.gardens
+    @appointments = Appointment.all
+    @appointments.each do |app|
+      if (app.host || app.guest) == current_user
+      @appointments << app
+      end
+    end
   end
+
 
   def create
     flash[:notice] = "Registration needed"

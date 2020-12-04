@@ -16,12 +16,25 @@
       <p>Outils disponibles : <% if @garden.tools_available %> <%= "Oui" %> <% else %> <%= "Non" %> <% end %></p>
       <p>Parking : <% if @garden.parking %> <%= "Possibilité de se garer" %> <% else %> <%= "Pas d'emplacement pour se garer" %> <% end %></p>
       <a href="<%= user_path(@user.id) %>" class="btn btn-outline-primary mt-2">Profil propriétaire</a>
+      <!-- LIKE / UNLIKE -->
+      <% if current_user %>
+        <p class="my-2"><%= @garden.favorites.count %> <%= (@garden.favorites.count) == 1 ? 'Like' : 'Likes'%></p>
+        <% pre_favorite = @garden.favorites.find { |favorite| favorite.user_id == current_user.id} %>
+        <% if pre_favorite %>
+          <%= button_to '👎', garden_favorite_path(@garden, pre_favorite), method: :delete %>
+        <% else %>
+            <%= button_to '👍', garden_favorites_path(@garden), :method => 'POST' %>
+        <% end %>
+      <% end %>
     </div>
-  </div>
+    </div>
 
  <!--Contact host -->
   <br><br>
   <hr>
+
+  <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
+
 
   <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter le propriétaire</a>
 

@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :guest, foreign_key: "guest_id", class_name: "Appointment"
   has_many :host, foreign_key: "host_id", class_name: "Appointment"
   has_one_attached :avatar
+  has_many :favorites, :dependent => :destroy
+  has_many :favorite_posts, :through => :favorites, :source => :post
+
 
 
   def to_param
