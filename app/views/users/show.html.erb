@@ -71,6 +71,7 @@
         <div class="container">
           <h4> Mes annonces </h4>
           <br><br>
+          <% if @gardens != nil%> 
           <% @gardens.each_with_index do |garden, i| %>
         <div class="card h-100 w-55">
           <img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" >
@@ -84,6 +85,7 @@
             <a href="<%= edit_garden_path %>"><button type="button" edit_garden_path class="btn btn-secondary">Editer mon annonce </button></a>
           </div>
         </div>
+        <%end%>
         <%end%>
       </div>
     </div>
