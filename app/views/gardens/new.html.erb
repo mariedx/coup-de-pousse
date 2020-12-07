@@ -52,7 +52,7 @@
 
           <div class="form-group">
             <%= f.label :picture, "Ajouter une photo" %><br />
-            <%= f.file_field :pictures, multiple: true, direct_upload: true %>
+            <%= f.file_field :pictures, multiple: true, direct_upload: true, accept: 'image/png,image/gif,image/jpeg'%>
           </div>
 
           <div class="actions mt-4">
