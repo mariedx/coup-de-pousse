@@ -5,11 +5,7 @@ class Garden < ApplicationRecord
   has_many :garden_categories
   has_many :categories, through: :garden_categories
   has_many   :favorites, :dependent => :destroy
-  has_one_attached :avatar
-
-  def to_param
-    [id, title.parameterize].join("-")
-  end
+  has_many_attached :pictures
 
   def self.search(search)
     if search
