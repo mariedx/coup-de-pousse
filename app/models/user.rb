@@ -11,10 +11,8 @@ class User < ApplicationRecord
   has_many :favorites, :dependent => :destroy
   has_many :favorite_posts, :through => :favorites, :source => :post
 
-
-
-  def to_param
+    def to_param
     [id, first_name.parameterize].join("-")
   end
-
+  
 end
