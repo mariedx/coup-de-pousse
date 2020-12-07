@@ -1,0 +1,18 @@
+<div class="row text-left mt-5 mx-5">
+    <% @favorited_gardens.each do |garden| %>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="<%= garden_path(garden) %>"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="<%= garden_path(garden) %>"><%= garden.title %></a>
+            </h4>
+            <h5><%= garden.surface %> m2</h5>
+            <p class="card-text"><%= garden.description %></p>
+            <a href="<%= garden_path(garden) %>"><button type="button" garden_path(garden) class="btn btn-primary">En savoir plus</button></a>
+            </div>
+            <p class ="text-right mr-4"><%= garden.favorites.count %> <%= (garden.favorites.count) == 1 ? '👍' : '👍'%></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
