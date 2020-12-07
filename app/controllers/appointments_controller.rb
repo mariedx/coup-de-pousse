@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
 
 
     if @appointment.save
-      redirect_to garden_appointment_path(@appointment.garden.id, @appointment.id)
+      redirect_to user_path(current_user.id)
       flash[:success] = "Le rendez-vous est pris !"
     else
     render :new
