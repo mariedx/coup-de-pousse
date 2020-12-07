@@ -11,7 +11,7 @@ class Garden < ApplicationRecord
   end
 
   def self.search(search)
-    if search 
+    if search
       address = Address.where(city: search)
       if address
         self.where(address_id: address)

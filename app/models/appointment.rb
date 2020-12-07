@@ -6,8 +6,9 @@ class Appointment < ApplicationRecord
   validates_presence_of :start_date, :end_date
   validate :start_must_be_before_end_date
   validate :start_in_future
-
+  validate :duration
   after_create :new_app_guest, :new_app_host
+  validate :no_appointment_overlap
 
 
   # emails methods
@@ -26,6 +27,17 @@ class Appointment < ApplicationRecord
 
   def show_end_date
     self.end_date.strftime('%d/%m/%Y à %H:%M')
+  end
+
+  def duration
+    self.start_date - self.end_date
+  end
+
+
+  def no_appointment_overlap
+    if (Appointment.where("(? BETWEEN start_date AND end_date OR ? BETWEEN start_date AND end_date) AND garden_id = ?", self.start_date, self.end_date, self.garden_id).any?)
+       errors.add(:date_end, 'Le jardin est déjà reservé pour ces dates')
+    end
   end
 
   private
