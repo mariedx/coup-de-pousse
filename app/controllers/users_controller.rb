@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_favorites = @user.favorites
-    @garden_favorites = Garden.find_by(@user_favorites)
+    @user_favorites = Favorite.where(user_id: current_user.id)
+    @gardens_favorites = Garden.find(@user.favorites.ids)
     @gardens = @user.gardens
     @appointments = Appointment.all
     @appointments.each do |app|
