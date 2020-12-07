@@ -5,6 +5,7 @@ class Garden < ApplicationRecord
   has_many :garden_categories
   has_many :categories, through: :garden_categories
   has_many   :favorites, :dependent => :destroy
+  has_many :comments
 
   def to_param
     [id, title.parameterize].join("-")

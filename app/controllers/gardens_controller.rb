@@ -10,6 +10,10 @@ class GardensController < ApplicationController
 
   end
 
+  def edit 
+   
+  end
+
   def create
     @garden = Garden.create(gardens_params)
     @garden.user = current_user

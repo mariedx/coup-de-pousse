@@ -42,5 +42,10 @@
   <%end%>
   <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary">Contacter le propriétaire</a>
 
+
+  <hr>
+      <%= render partial: 'gardens/form' %>
+
+     <%= render partial: 'gardens/comment', collection: @garden.comments.reverse %>
   </div>
 </div>

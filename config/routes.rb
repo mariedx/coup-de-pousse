@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   resources :gardens do
+    resources :comments
     resources :favorites
     resources :appointments
   end
