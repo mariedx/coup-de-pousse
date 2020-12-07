@@ -1,5 +1,5 @@
-<div class="row text-left">
-    <% @gardens_favorites.each_with_index do |garden, i| %>
+<div class="row text-left mt-5 mx-5">
+    <% @favorited_gardens.each do |garden| %>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
           <a href="<%= garden_path(garden) %>"><img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" ></a>
