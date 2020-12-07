@@ -1,4 +1,4 @@
-<% if current_user.id != @user.id  %>
+ <% if current_user.id != @user.id  %>
 <div class="container mt-5 mb-5 bg-light-primary text-center"">
   <br>
   <h2>Profil<h2>
@@ -71,10 +71,9 @@
         <div class="container">
           <h4> Mes annonces </h4>
           <br><br>
-          <% if @gardens != nil%> 
+          <% if @gardens != nil%>
           <% @gardens.each_with_index do |garden, i| %>
         <div class="card h-100 w-55">
-          <img class="card-img-top" src="<%= garden.image_url %>" class="cover" alt="" >
           <div class="card-body">
             <h4 class="card-title">
               <%= garden.title %></a>
@@ -108,6 +107,8 @@
 <div>
   <center>
     <h2> Mes favoris </h2>
+    <%= render partial: 'favorite'%>
+
 </div>
 <%end%>
 

@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   root 'gardens#index'
 
   devise_for :users
-  resources :users do
-    resources :avatars, only: [:create]
-  end
+  resources :users
   resources :gardens do
+    resources :comments
     resources :favorites
     resources :appointments
   end

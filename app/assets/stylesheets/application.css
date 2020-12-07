@@ -79,10 +79,16 @@ html, body {
   justify-content: space-between;
 }
 
+.picture-garden-index {
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
 /* Show garden */
-.card-img-show {
+.picture-garden-show {
   width: 500px;
-  height: 400px;
+  height: 390px;
   object-fit: cover;
 }
 
