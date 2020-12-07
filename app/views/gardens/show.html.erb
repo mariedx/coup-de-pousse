@@ -30,7 +30,7 @@
       </div>
     </div>
     
-    <div class="col-md-6 text-left mt-2">
+    <div class="col-md-6 text-left  ">
       <h5>Description :</h5>
       <h6><%= @garden.description %></h6><br>
       <p>Surface : <%= @garden.surface %></p>
@@ -40,37 +40,33 @@
       <p>Parking : <% if @garden.parking %> <%= "Possibilité de se garer" %> <% else %> <%= "Pas d'emplacement pour se garer" %> <% end %></p>
     
       <!-- LIKE / UNLIKE -->
+      <div class="like-unlike mb-2">
       <% if current_user %>
-        <p class="my-2"><%= @garden.favorites.count %> <%= (@garden.favorites.count) == 1 ? 'Like' : 'Likes'%></p>
         <% pre_favorite = @garden.favorites.find { |favorite| favorite.user_id == current_user.id} %>
         <% if pre_favorite %>
           <%= button_to '👎', garden_favorite_path(@garden, pre_favorite), method: :delete %>
         <% else %>
           <%= button_to '👍', garden_favorites_path(@garden), :method => 'POST' %>
         <% end %>
+        <p class="ml-3"><%= @garden.favorites.count %> <%= (@garden.favorites.count) == 1 || 0 ? 'Like' : 'Likes'%></p>
       <% end %>
-    </div>
-  </div>
+      </div>
 
-
-  <hr>
-      <%= render partial: 'gardens/form' %>
-
-     <%= render partial: 'gardens/comment', collection: @garden.comments.reverse %>
-  <!--Contact host -->
-  <div class="mt-5">
-    <hr>
+    <!-- Contact-appointment -->
     <% if current_user != nil%>
-    <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
-      <% else %>
+      <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
+    <% else %>
       <p>Envie de prendre un rendez-vous ?
         <%=link_to "Je me connecte", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id])%>
       </p>
     <%end%>
-    <a href="<%= user_path(@user.id) %>" class="btn btn-outline-primary">Profil propriétaire</a>
-    <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary">Contacter le propriétaire</a>
+    <%= link_to "Profil propriétaire", user_path(@user.id), class: "btn btn-outline-primary"%>
+    </div>
   </div>
 
+  <br><hr>
+    <%= render partial: 'gardens/form' %>
+    <%= render partial: 'gardens/comment', collection: @garden.comments.reverse %>
 </div>
 
 
