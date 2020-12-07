@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_133629) do
     t.boolean "parking"
     t.boolean "tools_available"
     t.integer "surface"
+    t.string "image_url"
     t.bigint "user_id"
     t.bigint "address_id"
     t.datetime "created_at", null: false
