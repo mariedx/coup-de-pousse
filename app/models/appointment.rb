@@ -20,7 +20,13 @@ class Appointment < ApplicationRecord
     AppointmentMailer.new_app_host(self).deliver_now
   end
 
+  def show_start_date
+    self.start_date.strftime('%d/%m/%Y à %H:%M')
+  end
 
+  def show_end_date
+    self.end_date.strftime('%d/%m/%Y à %H:%M')
+  end
 
   private
 
