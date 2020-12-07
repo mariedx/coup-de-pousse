@@ -1,0 +1,9 @@
+<h1>Hello jeune pousse !</h1>
+
+<p>Votre demande de rendez-vous du <%= @appointment.start_date%> a bien été envoyée à votre co-jardinier !</p>
+<p>Vous pouvez modifier ou supprimer ce rendez-vous depuis <%= link_to "votre profil", user_url(@appointment.guest.id)%></p>
+<p>Pour en savoir plus sur votre co-jardinier ou le recontacter, visitez <%= link_to "son profil", user_url(@appointment.host.id)%></p>
+
+<p>Retrouver ici tous les informations sur <%= link_to "son jardin", garden_url(@appointment.garden.id)%></p> pour préparer au mieux ce rendez-vous</p>
+
+<p>À bientôt sur Coup de pousse !</p>

@@ -17,4 +17,11 @@ class User < ApplicationRecord
     [id, first_name.parameterize].join("-")
   end
 
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Vous devez vous connecter pour effectuer cette action"
+      redirect_to new_user_session_path
+    end
+  end
+
 end

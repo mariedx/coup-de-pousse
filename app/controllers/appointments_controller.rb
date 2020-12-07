@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @garden = Garden.find(params[:garden_id])
@@ -21,11 +22,8 @@ class AppointmentsController < ApplicationController
     @appointment.guest = current_user
 
 
-    print'*'*62
-    print params[:garden_id]
-
     if @appointment.save
-      redirect_to appointment_path(@appointment.id)
+      redirect_to garden_appointment_path(@appointment.garden.id, @appointment.id)
       flash[:success] = "Le rendez-vous est pris !"
     else
     render :new
