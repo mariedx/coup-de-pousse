@@ -12,5 +12,8 @@ class User < ApplicationRecord
 
 
 
+  def to_param
+    [id, first_name.parameterize].join("-")
+  end
 
 end
