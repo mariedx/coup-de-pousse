@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
 
   def create
     flash[:notice] = "Registration needed"
@@ -36,7 +35,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :avatar, :description, :tools)
   end
-
-
 
 end
