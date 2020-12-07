@@ -33,28 +33,14 @@
   <br><br>
   <hr>
 
+  <% if current_user != nil%>
   <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
+    <% else %>
+    <p>Envie de prendre un rendez-vous ?
+      <%=link_to "Je me connecte", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id])%>
+    </p>
+  <%end%>
+  <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary">Contacter le propriétaire</a>
 
-
-  <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter le propriétaire</a>
-
-  <h5 class="my-4"> Contacter le propriétaire</h5>
-  <div class="form-contact mx-5 mb-5">
-    <form>
-       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Objet</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Message</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-
-      <div class="actions">
-        <button href="<%= root_path %>" class="btn btn-outline-primary mt-2">Envoyer</button>
-      </div>
-
-    </form>
   </div>
 </div>
