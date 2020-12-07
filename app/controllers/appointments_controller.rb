@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user, only: [:new, :create, :edit, :destroy]
 
   def new
     @garden = Garden.find(params[:garden_id])
@@ -59,6 +59,13 @@ class AppointmentsController < ApplicationController
 
   def app_params
     app_params = params.require(:appointment).permit(:start_date, :end_date, :message_contact, :garden_id, :host_id, :guest_id)
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Vous devez vous connecter pour prendre un rendez-vous"
+      redirect_to new_user_session_path
+    end
   end
 
 
