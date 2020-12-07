@@ -4,8 +4,8 @@
 
 
     <!-- summary -->
-    <h6 class="font-weight-bold">Date de début : <span class="text-muted"><%= @appointment.start_date %></span></h6>
-    <h6 class="font-weight-bold">Date de fin : <span class="text-muted"><%= @appointment.end_date %></span></h6>
+    <h6 class="font-weight-bold">Date de début : <span class="text-muted"><%= @appointment.show_start_date %></span></h6>
+    <h6 class="font-weight-bold">Date de fin : <span class="text-muted"><%= @appointment.show_end_date %></span></h6>
     <br><br>
     <h6 class="font-weight-bold"><span class="text-secondary">Au besoin, vous pouvez joindre votre
     <% if current_user == @appointment.host%> <%='invité'%> <%else%> <%='hôte'=%> <%end%>par mail à l'adresse suivante :
