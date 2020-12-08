@@ -79,12 +79,24 @@ html, body {
   justify-content: space-between;
 }
 
+.picture-garden-index {
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
 /* Show garden */
-.card-img-show {
+.picture-garden-show {
   width: 500px;
-  height: 400px;
+  height: 390px;
   object-fit: cover;
 }
+
+.like-unlike {
+  display: flex;
+}
+
+
 
 /* personalised theme */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
