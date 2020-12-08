@@ -66,3 +66,6 @@ gem 'faker'
 gem 'faker'
 gem 'table_print'
 gem 'mailjet'
+gem 'simple_form'
+gem 'dotenv-rails'
+gem "aws-sdk-s3", require: false

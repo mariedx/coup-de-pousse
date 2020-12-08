@@ -1,0 +1,9 @@
+Hello jeune pousse !
+
+Votre demande de rendez-vous du <%= @appointment.start_date%> a bien été envoyée à votre co-jardinier !
+Vous pouvez modifier ou supprimer ce rendez-vous depuis <%= link_to "votre profil", user_url(@appointment.guest.id)%>
+Pour en savoir plus sur votre co-jardinier ou le recontacter, visitez <%= link_to "son profil", user_url(@appointment.host.id)%>
+
+Retrouver ici tous les informations sur <%= link_to "son jardin", garden_url(@appointment.garden.id)%></p> pour préparer au mieux ce rendez-vous
+
+À bientôt sur Coup de pousse !

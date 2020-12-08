@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <p class="lead">Votre rendez-vous au <%= @appointment.garden.title %></p>
+
+
+    <!-- summary -->
+    <h6 class="font-weight-bold">Date de début : <span class="text-muted"><%= @appointment.show_start_date %></span></h6>
+    <h6 class="font-weight-bold">Date de fin : <span class="text-muted"><%= @appointment.show_end_date %></span></h6>
+    <br><br>
+    <h6 class="font-weight-bold"><span class="text-secondary">Au besoin, vous pouvez joindre votre
+    <% if current_user == @appointment.host%> <%='invité'%> <%else%> <%='hôte'=%> <%end%>par mail à l'adresse suivante :
+    <p class="text-danger"><% if current_user == @appointment.host%> <%=@appointment.guest.email%> <%else%> <%=@appointment.host.email%> <%end%> </p></span></h6>
+
+    <%= link_to "Modifier le rendez-vous", edit_garden_appointment_path(@appointment.garden.id, @appointment.id), class: "btn btn-outline-success"%>
+    <%= link_to "Supprimer le rendez-vous", garden_appointment_path(@appointment.garden.id, @appointment.id), class: "btn btn-outline-danger", :method => 'DELETE', :data => {:confirm => "Vous êtes sûr de vouloir supprimer ce rendez-vous ?"} %>
+  </div>
+</div>
