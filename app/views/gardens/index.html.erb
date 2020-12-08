@@ -37,6 +37,10 @@
   <h2>Nos petits jardinets d'amour</h2>
   <br><br>
 
+
+  <%= link_to "Messagerie", chat_rooms_path, class: "btn btn-outline-success"%>
+
+
  <!--Filter -->
   <h3>Rechercher par ville :</h3>
   <p>(Paris, Saint-Gervais ou La-Celle-Saint-Cloud, les précurseurs &#128540;)</p>
@@ -78,7 +82,7 @@
                 </a>
               </div>
             </div>
-        
+
             <h4 class="card-title">
               <a href="<%= garden_path(garden) %>"><%= garden.title %></a>
             </h4>
@@ -87,7 +91,7 @@
             <div class="bottom-card mt-auto">
               <p class="card-text"><strong><%= garden.address.city %></strong></p>
               <div class="bottom-card-info">
-                <a href="<%= garden_path(garden) %>"><button type="button" garden_path(garden) class="btn btn-outline-success">En savoir plus</button></a>
+                <%= link_to "En savoir plus", garden_path(garden), class: "btn btn-outline-success"%>
                 <p class ="text-right mr-4"><%= garden.favorites.count %> <%= (garden.favorites.count) == 1 ? '👍' : '👍'%></p>
               </div>
             </div>

@@ -9,9 +9,16 @@ class User < ApplicationRecord
   has_many :host, foreign_key: "host_id", class_name: "Appointment"
   has_one_attached :avatar
   has_many :favorites, :dependent => :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
+
 
     def to_param
-    [id, first_name.parameterize].join("-")
-  end
-  
+      [id, first_name.parameterize].join("-")
+     end
+
+    def name
+      email.split('@')[0]
+    end
+
 end
