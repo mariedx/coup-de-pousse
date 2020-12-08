@@ -25,7 +25,6 @@ class GardensController < ApplicationController
     end
   end
 
-
   def create
     @garden = Garden.create(gardens_params)
     @garden.user = current_user
@@ -41,14 +40,15 @@ class GardensController < ApplicationController
     @gardens = Garden.search(params[:search])
   end
 
-  def destroy 
-  Garden.find(params[:id]).destroy
-    if @garden.destroy 
-      redirect_to root_path
-      flash[:success] = "Annonce supprimée"
-    end 
-  end 
-
+  def destroy
+    @garden = Garden.find(params[:id])
+    @garden.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "L'annonce est supprimée" }
+      format.js {}
+    end
+  end
+  
   private
 
   def gardens_params
