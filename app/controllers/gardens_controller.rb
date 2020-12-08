@@ -11,7 +11,18 @@ class GardensController < ApplicationController
   end
 
   def edit 
-   
+    @garden = Garden.find(params[:id])
+  end
+
+  def update
+    @garden = Garden.find(params[:id])
+    if @garden.update(gardens_params)
+      flash[:notice] = "Annonce éditée !"
+      redirect_to garden_path(@garden.id)
+    else
+      flash.now[:alert] = "Impossible d'éditer l'annonce' :"
+      render :edit
+    end
   end
 
   def create
@@ -29,6 +40,15 @@ class GardensController < ApplicationController
     @gardens = Garden.search(params[:search])
   end
 
+  def destroy
+    @garden = Garden.find(params[:id])
+    @garden.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "L'annonce est supprimée" }
+      format.js {}
+    end
+  end
+  
   private
 
   def gardens_params

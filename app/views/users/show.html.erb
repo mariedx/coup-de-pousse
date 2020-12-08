@@ -1,114 +1,77 @@
- <% if current_user.id != @user.id  %>
-<div class="container mt-5 mb-5 bg-light-primary text-center"">
-  <br>
-  <h2>Profil<h2>
-  <br>
-  <%if @user.avatar.attached?%>
-  <br>
+<% if current_user.id != @user.id  %>
+  <!--Profil of an user-->
+  <div class="container mt-5 mb-5 bg-light-primary text-center">
+    <h2>Profil<h2>
+    <br><br>
 
+    <!-- avatar-->
+    <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture', class: 'avatar' %>
+    <%else%>
+      <img class="avatar" src="https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+    <%end%>
 
-          <img class="avatar" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture'%>
+    <!--infos-->
+    <div class="card-body">
+      <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if @user.first_name != nil%> <%= @user.first_name%></p> <% end%>
+      <h6 class="font-weight-light">Nom : <p class="text-primary"><% if @user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+      <h6 class="font-weight-light">Description : <p class="text-primary"><% if @user.description != nil%> <%= @user.description%></p> <% end%>
+      <h6 class="font-weight-light">Outils : <p class="text-primary"><% if @user.tools != nil%> <%= @user.tools%></p> <% end%>
+      <h6 class="font-weight-light">Email : <p class="text-primary"><%= @user.email %></p>
+    </div>
 
-          <%else%>
-
-          <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-
-        <%end%>
-        <br>
-      <div class="card-body">
-        <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if @user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-        <h6 class="font-weight-light">Nom : <p class="text-primary"><% if @user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-        <h6 class="font-weight-light">Description : <p class="text-primary"><% if @user.description != nil%> <%= @user.description%></p> <% end%>
-        <h6 class="font-weight-light">Outils : <p class="text-primary"><% if @user.tools != nil%> <%= @user.tools%></p> <% end%>
-        <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
-      </div>
-      <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter</a>
-      <br><br>
+    <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary my-3">Contacter</a>
   </div>
-
 
 <% else %>
-<div class="container mt-5 mb-5">
-<div class="row">
-  <div class="col-lg-3 col-md-6 mb-4 bg-light-primary text-center">
-    <br>
-    <h2>Mon profil<h2>
-      <br>
-      <!--Avatar-->
-      <%if @user.avatar.attached?%>
+  <!--Current_user dashboard-->
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <!--Current_user profil-->
+      <div class="col-lg-3 col-md-6 mb-4 bg-light-primary text-center">
+        <h2 class="my-4">Mon profil<h2>
 
-        <img class="avatar" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture'%>
-
+        <!--avatar-->
+        <%if @user.avatar.attached?%>
+          <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture', class: 'avatar' %>
         <%else%>
+          <img class="avatar" src="https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+        <%end%>
 
-        <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-
-      <%end%>
-      <br>
-    <div class="card-body">
-      <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-      <h6 class="font-weight-light">Nom : <p class="text-primary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-      <h6 class="font-weight-light">Description : <p class="text-primary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
-      <h6 class="font-weight-light">Outils : <p class="text-primary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
-      <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
-    </div>
-
-          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3", :style => "width:230px" %>
-          <br>
-          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3", :style => "width:230px" %>
-          <br>
-  </div>
-
-  <div class="col-lg-6 col-md-6 mb-4">
-    <center>
-      <br>
-      <h2> Informations </h2>
-      <br><br>
-
-      <a href="<%= new_garden_path %>"><button type="button" new_garden_path class="btn btn-primary btn-lg">Ajouter mon jardin </button></a>
-
-        <br><br><br><br><br><br>
-        <div class="container">
-          <h4> Mes annonces </h4>
-          <br><br>
-          <% if @gardens != nil%>
-          <% @gardens.each_with_index do |garden, i| %>
-        <div class="card h-100 w-55">
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= garden.title %></a>
-            </h4>
-            <h5><%= garden.surface %> m2</h5>
-            <p class="card-text"><%= garden.description %></p>
-            <br>
-            <a href="<%= edit_garden_path %>"><button type="button" edit_garden_path class="btn btn-secondary">Editer mon annonce </button></a>
-          </div>
+        <!--infos-->
+        <div class="card-body">
+          <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
+          <h6 class="font-weight-light">Nom : <p class="text-primary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+          <h6 class="font-weight-light">Description : <p class="text-primary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
+          <h6 class="font-weight-light">Outils : <p class="text-primary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
+          <h6 class="font-weight-light">Email : <p class="text-primary"><%= @user.email %></p>
         </div>
-        <%end%>
-        <%end%>
-      </div>
-    </div>
 
-  <div class="col-lg-3 col-md-6 mb-4 bg-secondary-light">
-    <br>
-    <h2><center> Mes rendez-vous</center></h2>
-    <br><br>
+        <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3 w-100" %>
+        <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3 w-100" %>
+      </div>
+
+      <!--Current_user Ad-->
+      <div class="col-lg-6 col-md-6 mb-4 text-center">
+        <h2 class="my-4"> Mes Annonces </h2>
+        <%= render partial: 'ad'%>
+      </div>
+
+      <!--Current_user Appointments-->
+      <div class="col-lg-3 col-md-6 mb-4 bg-secondary-light text-center">
+        <h2 class="my-4">Mes rendez-vous</h2>
           <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Historique de mes rendez-vous</h6>
-
             <%= render partial: 'appointment'%>
-
-            </small>
           </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<div>
-  <center>
-    <h2> Mes favoris </h2>
-    <%= render partial: 'favorite'%>
-
-</div>
+  <!--Current_user Favorite gardens-->
+  <div class="container text-center">
+      <h2> Mes jardins favoris </h2>
+      <%= render partial: 'favorite'%>
+  </div>
 <%end%>
 
