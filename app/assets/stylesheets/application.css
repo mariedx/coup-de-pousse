@@ -25,13 +25,7 @@ html, body {
   border-radius: 10px;
 }
 
-.card-dashboard {
-  width: 400px;
-  margin: 0 auto; 
-  float: none; 
-}
-
-.show-favorite {
+.dashboard-card {
   display: flex;
   justify-content: space-between;
 }

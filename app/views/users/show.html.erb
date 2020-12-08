@@ -1,77 +1,40 @@
-<% if current_user.id != @user.id  %>
+<% if current_user.id != @user.id %>
   <!--Profil of an user-->
-  <div class="container mt-5 mb-5 bg-light-primary text-center">
-    <h2>Profil<h2>
-    <br><br>
-
-    <!-- avatar-->
-    <%if @user.avatar.attached?%>
-      <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture', class: 'avatar' %>
-    <%else%>
-      <img class="avatar" src="https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-    <%end%>
-
-    <!--infos-->
-    <div class="card-body">
-      <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if @user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-      <h6 class="font-weight-light">Nom : <p class="text-primary"><% if @user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-      <h6 class="font-weight-light">Description : <p class="text-primary"><% if @user.description != nil%> <%= @user.description%></p> <% end%>
-      <h6 class="font-weight-light">Outils : <p class="text-primary"><% if @user.tools != nil%> <%= @user.tools%></p> <% end%>
-      <h6 class="font-weight-light">Email : <p class="text-primary"><%= @user.email %></p>
-    </div>
-
-    <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary my-3">Contacter</a>
-  </div>
+  <%= render partial: 'user_profil'%>
 
 <% else %>
   <!--Current_user dashboard-->
-  <div class="container mt-5 mb-5">
-    <div class="row">
-      <!--Current_user profil-->
-      <div class="col-lg-3 col-md-6 mb-4 bg-light-primary text-center">
-        <h2 class="my-4">Mon profil<h2>
+  <div class="container">
+    <nav class="nav nav-tabs mt-3">
+    <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Mon profil</a>
+    <a class="nav-item nav-link" href="#p2" data-toggle="tab">Mes annonces</a>
+    <a class="nav-item nav-link" href="#p3" data-toggle="tab">Mes rendez-vous</a>
+    <a class="nav-item nav-link" href="#p4" data-toggle="tab">Mes favoris</a>
+    <a class="nav-item nav-link" href="#p5" data-toggle="tab">Mes messages</a>
+    </nav>
 
-        <!--avatar-->
-        <%if @user.avatar.attached?%>
-          <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture', class: 'avatar' %>
-        <%else%>
-          <img class="avatar" src="https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-        <%end%>
-
-        <!--infos-->
-        <div class="card-body">
-          <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-          <h6 class="font-weight-light">Nom : <p class="text-primary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-          <h6 class="font-weight-light">Description : <p class="text-primary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
-          <h6 class="font-weight-light">Outils : <p class="text-primary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
-          <h6 class="font-weight-light">Email : <p class="text-primary"><%= @user.email %></p>
-        </div>
-
-        <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3 w-100" %>
-        <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3 w-100" %>
+    <div class="tab-content">
+      <!--Profil-->
+      <div class="tab-pane fade show active" id="p1">
+      <%= render partial: 'current_user_profil'%>
       </div>
-
-      <!--Current_user Ad-->
-      <div class="col-lg-6 col-md-6 mb-4 text-center">
-        <h2 class="my-4"> Mes Annonces </h2>
-        <%= render partial: 'ad'%>
+      <!--Ad-->
+      <div class="tab-pane fade" id="p2">
+      <%= render partial: 'ad'%>
       </div>
-
-      <!--Current_user Appointments-->
-      <div class="col-lg-3 col-md-6 mb-4 bg-secondary-light text-center">
-        <h2 class="my-4">Mes rendez-vous</h2>
-          <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Historique de mes rendez-vous</h6>
-            <%= render partial: 'appointment'%>
-          </div>
+      <!--Appointments-->
+      <div class="tab-pane fade" id="p3">
+      <%= render partial: 'appointment'%>
+      </div>
+      <!--Favorite gardens-->
+      <div class="tab-pane fade" id="p4">
+      <%= render partial: 'favorite'%>
+      </div>
+      <!--Messages-->
+      <div class="tab-pane fade" id="p5">
+      <%= render partial: 'messages'%>
       </div>
     </div>
   </div>
 
-  <!--Current_user Favorite gardens-->
-  <div class="container text-center">
-      <h2> Mes jardins favoris </h2>
-      <%= render partial: 'favorite'%>
-  </div>
-<%end%>
-
+<% end %>

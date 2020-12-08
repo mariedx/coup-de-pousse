@@ -7,7 +7,6 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @user = @garden.user
-
   end
 
   def edit 
