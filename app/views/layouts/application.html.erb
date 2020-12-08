@@ -19,6 +19,20 @@
   <body>
 
     <%= render 'layouts/nav' %>
+
+      <%= link_to 'CableChat', chat_rooms_path, class: 'navbar-brand' %>
+
+  <% if user_signed_in? %>
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <span class="text-muted">Logged in as <strong><%= current_user.name %></strong></span>
+      </li>
+      <li class="nav-item active">
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+    </ul>
+  <% end %>
+
     <%= render 'layouts/flash'%>
     <%= yield %>
     <%= render 'layouts/footer' %>
