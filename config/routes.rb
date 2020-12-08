@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'gardens#index'
 
   devise_for :users
-  resources :users
+  resources :users 
+
   resources :gardens do
     resources :comments
     resources :favorites
