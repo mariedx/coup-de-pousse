@@ -38,7 +38,9 @@
   <br><br>
 
 
-  <%= link_to "Messagerie", chat_rooms_path, class: "btn btn-outline-success"%>
+      <% if current_user != nil %>
+         <%= link_to "Messagerie", user_chat_rooms_path(current_user.id), class: "btn btn-outline-success"%>
+      <% end %>
 
 
  <!--Filter -->

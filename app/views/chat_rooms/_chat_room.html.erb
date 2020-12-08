@@ -1,1 +1,5 @@
-<li><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></li>
+
+ <% @chat_rooms.each do |chat| %>
+<li><%= link_to "#{chat.title} avec #{@receiver.name}", user_chat_room_path(current_user.id, chat_room) %></li>
+<%end%>
+
