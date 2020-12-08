@@ -95,7 +95,7 @@ Rails.application.configure do
 
 
   config.action_cable.allowed_request_origins = ['https://coup-de-pousse-staging.herokuapp.com',
-    'http://coup-depousse-staging.herokuapp.com']
+  'http://coup-depousse-staging.herokuapp.com']
 
 config.action_cable.url = "wss://scoup-depousse-staging.herokuapp.com/cable"
 
