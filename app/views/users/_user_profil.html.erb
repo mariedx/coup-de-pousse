@@ -1,0 +1,22 @@
+<div class="container mt-5 mb-5 bg-light-primary text-center">
+  <h2>Profil<h2>
+  <br><br>
+
+  <!-- avatar-->
+  <%if @user.avatar.attached? %>
+    <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture', class: 'avatar' %>
+  <%else%>
+    <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
+  <%end%>
+
+  <!--infos-->
+  <div class="card-body">
+    <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if @user.first_name != nil%> <%= @user.first_name%></p> <% end%>
+    <h6 class="font-weight-light">Nom : <p class="text-primary"><% if @user.last_name != nil%> <%= @user.last_name%></p> <% end%>
+    <h6 class="font-weight-light">Description : <p class="text-primary"><% if @user.description != nil%> <%= @user.description%></p> <% end%>
+    <h6 class="font-weight-light">Outils : <p class="text-primary"><% if @user.tools != nil%> <%= @user.tools%></p> <% end%>
+    <h6 class="font-weight-light">Email : <p class="text-primary"><%= @user.email %></p>
+  </div>
+
+  <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary my-3">Contacter</a>
+</div>
