@@ -1,6 +1,7 @@
 <h1>Vos conversations</h1>
 
 
-<% @chat_rooms.each do |chat| %>
-<li><%= link_to "#{chat.title}", user_chat_room_path(current_user.id, chat.id) %></li>
-<%end%>
+<ul>
+  <%= render @chat_rooms %>
+</ul>
+
