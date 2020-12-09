@@ -32,10 +32,10 @@ tp User.all
     parking: Faker::Boolean.boolean,
     tools_available: Faker::Boolean.boolean,
     surface: Faker::Number.between(from: 10, to: 300),
-    #image_url: pictures_array[rand(pictures_array.length)],
+    # image_url: pictures_array[rand(pictures_array.length)],
     user_id: User.ids.sample,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
+    # latitude: Faker::Address.latitude,
+    # longitude: Faker::Address.longitude,
 )
 end
 

@@ -6,9 +6,15 @@ class Garden < ApplicationRecord
   has_many :favorites, :dependent => :destroy
   has_many :comments
   has_one_attached :picture
+  geocoded_by :address
+  after_validation :geocode
 
   def to_param
     [id, title.parameterize].join("-")
+  end
+
+  def address
+    [street_number, street_name, zip_code, city, country].compact.join(', ')
   end
 
 end
