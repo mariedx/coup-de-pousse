@@ -1,32 +1,29 @@
-<nav class="nav">
-        <div class="container">
-            <div class="logo">
-                <a href="#">Your Logo</a>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "COUP DE POUSSE", root_path, :class => "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
       <% if current_user == nil %>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <li><%= link_to "Se connecter", new_user_session_path%></li>
-                    <li> <%= link_to "S'inscrire", new_user_registration_path%></li>
-                </ul>
-            </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connexion</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Se connecter", new_user_session_path, :class => "dropdown-item" %>
+          <%= link_to "S'inscrire", new_user_registration_path, :class => "dropdown-item" %>
+          </div>
+        </li>
       <% else %>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <%= link_to "Mon profil", user_path(current_user)%>
-                    <%= link_to "Se déconnecter", destroy_user_session_path, :method => 'DELETE' %>
-                </ul>
-            </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon profil</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Mon profil", user_path(current_user), :class => "dropdown-item" %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, :class => "dropdown-item", :method => 'DELETE' %>
+          </div>
+        </li>
       <% end %>
-            <span class="navTrigger">
-               <i><li> <%= link_to "S'inscrire", new_user_registration_path%></li></i>
-
-                <i></i>
-                <i></i>
-            </span>
-        </div>
-
-
-
+      </ul>
+    </div>
 </nav>
-
