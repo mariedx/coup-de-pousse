@@ -15,3 +15,4 @@
 //= require activestorage
 //= require turbolinks
 //= require cable
+//= require nav
