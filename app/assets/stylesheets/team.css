@@ -1,0 +1,10 @@
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.img-team4{
+  width: 103%;
+}
