@@ -58,12 +58,14 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string "title"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sender_id"
     t.bigint "receiver_id"
     t.index ["receiver_id"], name: "index_chat_rooms_on_receiver_id"
     t.index ["sender_id"], name: "index_chat_rooms_on_sender_id"
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
