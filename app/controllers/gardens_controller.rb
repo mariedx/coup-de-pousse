@@ -36,7 +36,7 @@ class GardensController < ApplicationController
   end
 
   def index
-    @gardens = Garden.search(params[:search])
+    @gardens = Garden.all
   end
 
   def destroy
