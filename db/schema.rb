@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_154222) do
+ActiveRecord::Schema.define(version: 2020_12_09_143147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,22 +34,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_154222) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "zip_code"
-    t.string "city"
-    t.string "street_number"
-    t.string "street_name"
-    t.string "street"
-    t.string "department"
-    t.string "department_code"
-    t.string "country"
-    t.string "country_code"
-    t.float "lat"
-    t.float "lng"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "appointments", force: :cascade do |t|
@@ -119,11 +103,17 @@ ActiveRecord::Schema.define(version: 2020_12_08_154222) do
     t.boolean "parking"
     t.boolean "tools_available"
     t.integer "surface"
+    t.string "image_url"
     t.bigint "user_id"
-    t.bigint "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_gardens_on_address_id"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end
 
