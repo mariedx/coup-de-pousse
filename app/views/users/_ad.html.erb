@@ -41,7 +41,7 @@
             <h5><%= garden.surface %> m2</h5>
             <p class="card-text"><%= garden.description %></p>
             <div class="bottom-card mt-auto">
-              <p class="card-text"><strong><%= garden.address.city %></strong></p>
+              <p class="card-text"><strong><%= garden.city %></strong></p>
               <%= link_to "Editer", edit_garden_path(garden.id), class: "btn btn-outline-warning" %>
               <%= link_to "Supprimer", garden_path(garden.id), :class => "btn btn-outline-danger", :method => 'DELETE', :data => {:confirm => 'Sûr ?'} %>
             </div>
