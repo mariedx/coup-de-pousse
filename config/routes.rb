@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'gardens#index'
 
   devise_for :users
-  resources :users 
 
   resources :gardens do
     resources :comments
@@ -10,7 +9,10 @@ Rails.application.routes.draw do
     resources :appointments
   end
 
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :users do
+    resources :chat_rooms, only: [:new, :create, :show, :index]
+  end
+
   mount ActionCable.server => '/cable'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

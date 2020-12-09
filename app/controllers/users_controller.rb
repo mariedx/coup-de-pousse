@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     #showing user's favorites
     @user_favorites = current_user.favorites
-    @favorited_gardens = [] 
+    @favorited_gardens = []
     @user_favorites.each do |fav|
     @favorited_gardens << fav.garden
     end
@@ -21,7 +21,13 @@ class UsersController < ApplicationController
       @appointments << app
       end
     end
+
+    #selecting chatrooms created by user or sent to user
+    @chat_rooms = ChatRoom.where(sender_id: current_user.id).or(ChatRoom.where(receiver_id: current_user.id))
+
+
   end
+
 
   def create
     flash[:notice] = "Registration needed"
@@ -43,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :avatar, :description, :tools)
   end

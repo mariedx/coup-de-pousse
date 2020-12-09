@@ -1,18 +1,25 @@
 class ChatRoomsController < ApplicationController
 
   def index
-    @chat_rooms = ChatRoom.all
+    @chat_rooms = ChatRoom.where(sender_id: current_user.id).or(ChatRoom.where(receiver_id: current_user.id))
   end
+
 
   def new
     @chat_room = ChatRoom.new
+    @user = User.find(params[:user_id])
   end
 
   def create
-    @chat_room = current_user.chat_rooms.build(chat_room_params)
+    @sender = current_user
+    @receiver = User.find(params[:user_id])
+    @chat_room = ChatRoom.new(chat_room_params)
+    @chat_room.sender = @sender
+    @chat_room.receiver = @receiver
+
     if @chat_room.save
-      flash[:success] = 'Chat room added!'
-      redirect_to chat_rooms_path
+      flash[:success] = 'Conversation créée!'
+      redirect_to user_chat_rooms_path(@receiver.id)
     else
       render 'new'
     end
@@ -26,6 +33,6 @@ class ChatRoomsController < ApplicationController
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:title)
+    params.require(:chat_room).permit(:title, :sender_id, :receiver_id)
   end
 end
