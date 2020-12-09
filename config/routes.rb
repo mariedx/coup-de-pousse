@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/team'
+  get 'static_pages/contact'
   root 'gardens#index'
 
   devise_for :users

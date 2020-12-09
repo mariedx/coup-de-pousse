@@ -843,3 +843,14 @@ a.text-danger:hover, a.text-danger:focus {
 .alert-warning > td {
   background-color: #f47185;
 }
+
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+}
+
+.img-team4{
+  width: 103%;
+}
