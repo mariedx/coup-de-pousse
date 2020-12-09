@@ -61,29 +61,11 @@
         <div class="card h-100">
           <div class="card-body d-flex flex-column">
             <!-- Picture -->
-            <div class="flat-content">
-              <div id="carouselExampleControls" class="carousel slide img-fluid picture-show" data-ride="carousel">
-                <div class="carousel-inner">
-                <%if garden.pictures.attached?%>
-                  <% garden.pictures.each_with_index do |picture, index| %>
-                    <div class="carousel-item <%= "active" if index == 0%>">
-                      <%= image_tag picture, alt: 'picture', class: 'picture-garden-index' %>
-                    </div>
-                  <% end %>
-                <%else%>
-                    <img class="img-fluid picture-garden-index" src="https://images.unsplash.com/photo-1438109382753-8368e7e1e7cf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80">
-                <%end%>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
+            <% if garden.picture.attached? %>
+              <%= image_tag garden.picture, alt: 'picture', class: 'img-fluid picture-garden-index' %>
+            <% else %>
+              <img class="img-fluid picture-garden-index" src="https://images.unsplash.com/photo-1438109382753-8368e7e1e7cf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80">
+            <% end %>
 
             <h4 class="card-title">
               <a href="<%= garden_path(garden) %>"><%= garden.title %></a>
