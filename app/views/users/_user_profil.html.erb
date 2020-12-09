@@ -1,13 +1,13 @@
-<div class="container mt-5 mb-5 bg-light-primary text-center">
+<div class="container bg-light-primary text-center my-5">
+  <br>
   <h2>Profil<h2>
-  <br><br>
 
   <!-- avatar-->
-  <%if @user.avatar.attached? %>
+  <% if @user.avatar.attached? %>
     <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture', class: 'avatar' %>
-  <%else%>
-    <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-  <%end%>
+  <% else %>
+    <img class="avatar" src="https://images.assetsdelivery.com/compings_v2/thesomeday123/thesomeday1231709/thesomeday123170900021.jpg">
+  <% end %>
 
   <!--infos-->
   <div class="card-body">
@@ -18,6 +18,6 @@
     <h6 class="font-weight-light">Email : <p class="text-primary"><%= @user.email %></p>
   </div>
 
-  <p class="lead"><%= link_to 'Contacter', new_user_chat_room_path(@user.id), class: 'btn btn-primary' %></p>
-  <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary my-3">Contacter</a>
+  <p class="lead"><%= link_to 'Contacter', new_user_chat_room_path(@user.id), class: 'btn btn-outline-success' %></p>
+  <br>
 </div>
