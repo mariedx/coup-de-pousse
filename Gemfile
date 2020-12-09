@@ -70,3 +70,4 @@ gem 'dotenv-rails'
 gem "aws-sdk-s3", require: false
 gem 'redis', '~> 3.2'
 gem 'jquery-rails'
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
