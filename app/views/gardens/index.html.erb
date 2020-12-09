@@ -11,34 +11,6 @@
     </div>
   </div>
 
-<!--Tree col -->
-<div class="container text-center">
-  <h2 class="mt-4">Donner ou recevoir un coup de pousse</h2>
-
-  <div class="row coltop mt-3">
-    <div class="col-lg-4 my-5">
-      <%= image_tag("sot.png", :class => "img_presentation") %>
-      <h4 class="my-5 mx-3">S'inscrire et compléter son profil</h4>
-      <p class="my-4 mx-4">Inscrivez-vous gratuitement pour proposer une annonce de prêt de jardin ou pour rechercher un jardin d'accueil à proximité de chez vous.</p>
-    </div>
-
-    <div class="col-lg-4 my-5">
-      <%= image_tag("gants.png", :class => "img_presentation") %>
-      <h4 class="my-5 mx-3">Rencontrer des jardiniers</h4>
-      <p class="my-4 mx-4">Echangez avec les propriétaires de jardins ou les jardiniers en recherche près de chez vous, proposez une date de rendez-vous et rencontrez-vous !</p>
-    </div>
-
-  <body>
-    <!--Jumbotron -->
-      <div class="jumbotron jumbotron-fluid mt-3">
-        <div class="container banner text-center">
-          <% if current_user != nil %>
-            <h3 class="welcome-message mb-3">Bonjour <%= current_user.first_name %> ! </h3>
-          <% end %>
-            <br>
-            <h2 class="header-title" >Partagez la passion de la terre grâce au cojardinage<h2>
-        </div>
-      </div>
 
     <!--Tree col -->
     <div class="container text-center">
