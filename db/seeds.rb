@@ -9,30 +9,18 @@
 require 'faker'
 
 User.destroy_all
-Address.destroy_all
 Garden.destroy_all
-
-
 
 20.times do
   user = User.new(email: Faker::Name.first_name+"@yopmail.com", password: Faker::Lorem.characters(number: 10))
   user.skip_confirmation!
   user.save!
 end
+puts "*" * 20
+puts "USERS"
 tp User.all
 
-
-20.times do
-  Address.create!(
-    city: ["Paris", "La-Celle-Saint-Cloud", "Saint-Gervais"].sample, 
-    zip_code: Faker::Address.zip_code)
-end
-tp Address.all
-
-#pictures_array = ["https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/dwarf-shrubs-land-morphology_11506.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/red-brick-path-foliage-daniel-shea-contemporary-garden-design_10137.jpg","https://i2.wp.com/jardinfute.com/wp-content/uploads/2019/06/carrepotager-1.jpg?resize=696%2C464&ssl=1",
-#"https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/design-with-nature_3581.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/living-green-design_3636.jpg", "https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/oehme-van-sweden-associates-inc_4972.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/hoerr-schaudt_5019.jpg","https://www.gardendesign.com/pictures/images/600x600Max/landscape-design-pictures_757/garden-diva-designs_5128.jpg","https://i.pinimg.com/originals/43/97/19/4397195be3f5c420eb117dcc6f25a998.jpg","https://ekladata.com/puGijl0elzRI6OPBERGaTIYCplU.jpg",
-#"https://i.redd.it/sko4xekab2f51.jpg","https://i.skyrock.net/8570/6858570/pics/1785965086_small.jpg", "https://i.skyrock.net/4243/81674243/pics/3303730980_1_3_mrXEDrUU.jpg","https://www.sudinfo.be/sites/default/files/dpistyles_v2/ena_sp_16_9_illustration_principale/2017/11/28/node_23556/84143/public/2017/11/28/B9713960705Z.1_20171128143107_000+G7HA805IA.3-0.jpg?itok=lLsl3L481511875877",
-#"https://p5.storage.canalblog.com/51/77/982369/121125380_o.jpg"]
+#pictures_array = ["https://images.unsplash.com/photo-1558521558-037f1cb027c5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80","https://images.unsplash.com/photo-1580600301354-0ce8faef576c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80","https://images.unsplash.com/photo-1557429287-b2e26467fc2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80","https://images.unsplash.com/photo-1557932937-1b5843aa7968?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=752&q=80","https://images.unsplash.com/photo-1444392061186-9fc38f84f726?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1652&q=80","https://images.unsplash.com/photo-1559321224-548cf5cd67c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80","https://images.pexels.com/photos/126271/pexels-photo-126271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/7283/garden.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/92933/pexels-photo-92933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/145685/pexels-photo-145685.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/334978/pexels-photo-334978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/130154/pexels-photo-130154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/147640/pexels-photo-147640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260","https://images.pexels.com/photos/7294/garden.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"]
 
 20.times do
   Garden.create!(
@@ -44,16 +32,21 @@ tp Address.all
     parking: Faker::Boolean.boolean,
     tools_available: Faker::Boolean.boolean,
     surface: Faker::Number.between(from: 10, to: 300),
-    #image_url: pictures_array[rand(pictures_array.length)],
+    # image_url: pictures_array[rand(pictures_array.length)],
     user_id: User.ids.sample,
-    address_id: Address.ids.sample
+    # latitude: Faker::Address.latitude,
+    # longitude: Faker::Address.longitude,
 )
 end
 
 sharingcond = ["Potager","Entretien du jardin","Planter des fleurs"]
+puts "*" * 20
+puts "GARDENS"
 tp Garden.all 
 
 Category.create(sharing_conditions: sharingcond[rand(sharingcond.length+1)])
+puts "*" * 20
+puts "CATEGORIES"
 tp Category.all 
 
 20.times do
@@ -62,5 +55,6 @@ tp Category.all
     category_id: Category.ids.sample
   )
 end
-
+puts "*" * 20
+puts "GARDEN CATEGORIES"
 tp GardenCategory.all

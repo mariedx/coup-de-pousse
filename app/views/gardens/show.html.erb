@@ -1,38 +1,21 @@
-<div class="container text-center mt-5 mb-5">
+<div class="container bg-light-primary text-center my-5">
+  <br>
   <h5 class="mb-5"> <%= @garden.title %> </h5>
 
-  <!--Show garden -->
   <div class="row row-top">
+    <!-- Picture -->
     <div class="col-md-6">
-      <!-- Picture -->
-      <div class="flat-content">
-        <div id="carouselExampleControls" class="carousel slide img-fluid picture-show" data-ride="carousel">
-          <div class="carousel-inner">
-           <%if @garden.pictures.attached?%>
-            <% @garden.pictures.each_with_index do |picture, index| %>
-              <div class="carousel-item <%= "active" if index == 0%>">
-                <%= image_tag picture, alt: 'picture', class: 'picture-garden-show' %>
-              </div>
-            <% end %>
-          <%else%>
-            <img class="img-fluid picture-garden-show" src="https://images.unsplash.com/photo-1438109382753-8368e7e1e7cf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80">
-          <%end%>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+      <% if @garden.picture.attached? %>
+        <%= image_tag @garden.picture, alt: 'picture', class: 'img-fluid picture-garden-show' %>
+      <% else %>
+        <img class="img-fluid picture-garden-show" src="https://images.unsplash.com/photo-1438109382753-8368e7e1e7cf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80">
+      <% end %>
     </div>
     
+    <!-- description -->
     <div class="col-md-6 text-left  ">
       <h5>Description :</h5>
-      <h6><%= @garden.description %></h6><br>
+      <h6 class="mb-3"><%= @garden.description %></h6>
       <p>Surface : <%= @garden.surface %></p>
       <p>Orientation : <%= @garden.orientation %></p>
       <p>Type de sol : <%= @garden.floor_type %></p>
@@ -57,8 +40,7 @@
       <%= link_to "Demander un rendez-vous", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id]), class: "btn btn-outline-success"%>
     <% else %>
       <p>Envie de prendre un rendez-vous ?
-        <%=link_to "Je me connecte", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id])%>
-      </p>
+        <%=link_to "Je me connecte", new_garden_appointment_path((params[:garden_id] = @garden.id), params[:id])%></p>
     <%end%>
     <%= link_to "Profil propriétaire", user_path(@user.id), class: "btn btn-outline-primary"%>
     </div>
@@ -67,6 +49,7 @@
   <br><hr>
     <%= render partial: 'gardens/form' %>
     <%= render partial: 'gardens/comment', collection: @garden.comments.reverse %>
+    <br>
 </div>
 
 
