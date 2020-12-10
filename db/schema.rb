@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "zip_code"
+    t.string "city"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "street"
+    t.string "department"
+    t.string "department_code"
+    t.string "country"
+    t.string "country_code"
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -103,7 +119,6 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
     t.boolean "parking"
     t.boolean "tools_available"
     t.integer "surface"
-    t.string "image_url"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
