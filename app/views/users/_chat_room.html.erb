@@ -1,9 +1,35 @@
 <div class="container bg-light-primary my-5">
-   <br>
-   <h2 class="text-center">Mes messages</h2>
-    <br>
-   <%@chat_rooms.each do |chat_room|%>
-      <li><%= link_to "#{chat_room.title} avec #{chat_room.pen_pal(current_user)}", user_chat_room_path(current_user.id, chat_room.id) %></li>
-   <%end%>
-   <br>
+  <br>
+  <h2 class="text-center">Mes messages</h2><br>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="card text-align">
+      <div class="card-header">
+        Conversations avec 
+      </div>
+        <%@chat_rooms.each do |chat_room|%>
+          <ul class="list-group list-group-flush">
+            <li><%= link_to "#{chat_room.pen_pal(current_user)}", user_chat_room_path(current_user.id, chat_room.id), class: 'ist-group-item' %></li>
+          </ul>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-9">
+      <div class="card text-align">
+      <div class="card-header">
+        Objet
+      </div>
+        <%@chat_rooms.each do |chat_room|%>
+          <ul class="list-group list-group-flush">
+            <li><%= link_to "#{chat_room.title}", user_chat_room_path(current_user.id, chat_room.id), class: 'ist-group-item' %>
+            </li>
+          </ul>
+        <%end%>
+      </div>
+    </div>
+  </div>
+
+  <br>
 </div>

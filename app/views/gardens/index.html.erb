@@ -1,5 +1,22 @@
-<% content_for :nav, render('layouts/custom_nav') %>
+<!DOCTYPE html>
+<html>
+  <head>
 
+  </head>
+
+  <body>
+  <% content_for :nav, render('layouts/custom_nav') %>
+    
+    <!--Jumbotron -->
+      <div class="jumbotron jumbotron-fluid mt-3">
+        <div class="container banner text-center">
+          <% if current_user != nil %>
+            <h3 class="welcome-message mb-3">Bonjour <%= current_user.first_name %> ! </h3>
+          <% end %>
+            <br>
+            <h2 class="header-title" >Partagez la passion de la terre grâce au cojardinage<h2>
+        </div>
+      </div>
 
     <!--Tree col -->
     <div class="container text-center">
@@ -50,7 +67,7 @@
               <p class="card-text"><%= garden.description %></p>
               <div class="bottom-card mt-auto">
                 <p class="card-text"><strong><%= garden.city %></strong></p>
-                <p id="map-js"> <% garden.longitude %><% garden.latitude %></p>
+                <div class="item" data-lng = "<% garden.longitude %>" data-lat=  "<% garden.latitude %>" data-title = "<% garden.title %>"></div>
                 <div class="bottom-card-info">
                   <%= link_to "En savoir plus", garden_path(garden), class: "btn btn-outline-success"%>
                   <p class ="text-right mr-4"><%= garden.favorites.count %> <%= (garden.favorites.count) == 1 ? '👍' : '👍'%></p>
@@ -58,28 +75,45 @@
               </div>
             </div>
           </div>
-        <% end %>
+        <% end %>        
       </div>
 
       <!-- Map Setting Up-->
-      <div id="mapid"></div>
+      <div id="map" class="map"></div>
+
       <script>
-        let mymap = L.map('mapid').setView([46.232193, 2.209667], 6);
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
-          id: 'mapbox/streets-v11',
-          tileSize: 512,
-          zoomOffset: -1,
-          accessToken: 'pk.eyJ1IjoiYWltZXJ5MSIsImEiOiJja2lmem96M3gxaW1zMnhwZTB1a3N4MmQyIn0.rvlNmP946RVoM9lNot5jxw'
-          }).addTo(mymap);
+        function initMap() {
+          //initiate de map
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 48.610875, lng: 2.4}, 
+            zoom: 5.5,
+            disableDefaultUI: true
 
-        L.popup()
-          .setLatLng([46.232193, 2.209667])
-          .setContent('<p>Jardin de J.Dujardin<br />lol</p>')
-          .openOn(mymap);
+        });
+        
+          //create 1 market per establishment (the entire DB is shown for now)
+          <%@gardens.each_with_index do |garden, i|%>
+              <%if garden.latitude && garden.longitude%>
+                  var marker<%=i%> = new google.maps.Marker({
+                      position: {lat: <%=garden.latitude%>, lng: <%=garden.longitude%>},
+                      map: map,
+                      title: '<%=garden.title%>'
+                  });
+                  marker<%=i%>.addListener('click', function() {
+                      infowindow.setContent('<h6><%=garden.title%></h6><p><%=garden.description%></p> <a href="<%=garden_path(garden)%>">Voir le jardin </a>');
+                      infowindow.open(map, this);
+                  });
+              <%end%>
+          <%end%>
+
+          var infowindow = new google.maps.InfoWindow({
+              maxWidth: 200
+          });
+        }
+
       </script>
+      
     </div>
-
+    <script src='https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_KEY'] %>&libraries=places&callback=initMap' async defer></script>
   <body>
 <html>
