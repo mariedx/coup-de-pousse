@@ -50,8 +50,10 @@ html, body {
 
   #map {
     position: sticky!important;
+    border-radius: 10px;
+    margin-bottom: 24px;
     top: 0;
-    right: 0;
+    right: 15px;
     left: 0;
     height: 100vh;
   }
