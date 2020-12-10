@@ -37,7 +37,28 @@ html, body {
   margin-bottom: 20px;
 }
 
+/* map */
+@media only screen and (min-width: 1100px) {
+  .container-map {
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+  }
 
+  .list-map {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    padding: 0 30px;
+  }
+
+  #map {
+    position: sticky!important;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+  }
+}
 
 /* personalised theme */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
