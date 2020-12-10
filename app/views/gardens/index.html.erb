@@ -1,16 +1,5 @@
 <% content_for :nav, render('layouts/custom_nav') %>
 
-<!--Jumbotron -->
-  <div class="jumbotron jumbotron-fluid mt-3">
-    <div class="container banner text-center">
-      <% if current_user != nil %>
-        <h3 class="welcome-message mb-3">Bonjour <%= current_user.first_name %> ! </h3>
-      <% end %>
-        <br>
-        <h2 class="header-title" >Partagez la passion de la terre grâce au cojardinage<h2>
-    </div>
-  </div>
-
 
     <!--Tree col -->
     <div class="container text-center">
