@@ -8,7 +8,7 @@
   <div class="row text-left mt-5 mx-5 dashboard-card">
     <% @gardens.each_with_index do |garden, i| %>
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
+        <div class="card">
             <!-- Picture -->
             <% if garden.picture.attached? %>
               <%= image_tag garden.picture, alt: 'picture', class: 'img-fluid picture-garden-index' %>

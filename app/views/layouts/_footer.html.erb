@@ -7,34 +7,27 @@
       </div>
       <div class="col-6 col-md">
         <h5>Mon Compte</h5>
-        <ul class="list-unstyled text-small">
           <% if current_user == nil %>
-            <li><%= link_to "Inscription", new_user_registration_path, :class => "text-muted" %></a></li>
-            <li><%= link_to "Connexion", new_user_session_path, :class => "text-muted" %></a></li>
+            <%= link_to "Inscription", new_user_registration_path, :class => "text-muted" %><br>
+            <%= link_to "Connexion", new_user_session_path, :class => "text-muted" %></a>
           <% else %>
-            <li><a <%= link_to "Mon profil", user_path(current_user), :class => "text-muted" %></a></li>
-            <li><a <%= link_to "Se déconnecter", destroy_user_session_path, :class => "text-muted",  :method => 'DELETE' %></a></a></li>
+            <%= link_to "Mon profil", user_path(current_user), :class => "text-muted" %><br>
+            <%= link_to "Se déconnecter", destroy_user_session_path, :class => "text-muted",  :method => 'DELETE' %>
           <% end %>
-        </ul>
       </div>
       <div class="col-6 col-md">
         <h5>Équipe</h5>
-        <ul class="list-unstyled text-small">
-          <li><a <%= link_to "Qui sommes nous?", static_pages_team_path, :class => "text-muted" %></a></li>
-          <li><a <%= link_to "Nous rejoindre", static_pages_contact_path, :class => "text-muted" %></a></li>
-        </ul>
+          <%= link_to "Qui sommes nous?", static_pages_team_path, :class => "text-muted" %><br>
+          <%= link_to "Nous rejoindre", static_pages_contact_path, :class => "text-muted" %>
       </div>
       <div class="col-6 col-md">
         <h5>Contacts</h5>
-        <ul class="list-unstyled text-small">
-          <li>
-            <a href="https://www.instagram.com/coupdepousse.thp/"><i class="fab fa-instagram mr-2"></i></a>
-            <a class="text-muted" href="https://www.instagram.com/coupdepousse.thp/">Instagram</a></li>
-          <li>
-            <a href="https://www.facebook.com/coup.de.pousse.thp"><i class="fab fa-facebook mr-2"></i></a>
-            <a class="text-muted" href="https://www.facebook.com/coup.de.pousse.thp">Facebook</a>
-          </li>
-        </ul>
+          <%= link_to "https://www.instagram.com/coupdepousse.thp/" do %>
+            <%= image_tag "insta.png", height: 35%>
+          <% end %>
+          <%= link_to "https://www.facebook.com/coup.de.pousse.thp" do %>
+            <%= image_tag "fb.png", height: 45%>
+          <% end %>
       </div>
     </div>
   </footer>
