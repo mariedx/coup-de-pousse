@@ -1,32 +1,20 @@
-<nav class="nav">
-  <div class="container">
-    <div class="logo">
-        <a <%= link_to "COUP DE POUSSE", root_path %></a>
-    </div>
-
-    <div id="mainListDiv" class="main_list">
-      <ul class="navlinks">
+<header>
+  <nav>
+      <div class="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "logoblanc.png", height: 95%>
+        <% end %>
+      </div>
+      <div class="menu">
+        <ul>
       <% if current_user == nil %>
-        <li><a <%= link_to "Se connecter", new_user_session_path, :class => "nav-item nav-link" %></a></li>
-        <li><a <%= link_to "S'inscrire", new_user_registration_path, :class => "nav-item nav-link" %></a></li>
+        <li><a <%= link_to "Se connecter", new_user_session_path, :class => "menu-icone" %></a></li>
+        <li><a <%= link_to "S'inscrire", new_user_registration_path, :class => "menu-icone" %></a></li>
       <% else %>
-        <li><a <%= link_to "Mon profil", user_path(current_user), :class => "nav-item nav-link" %></a></li>
-        <li><a <%= link_to "Se déconnecter", destroy_user_session_path, :class => "nav-item nav-link",  :method => 'DELETE' %></a></a></li>
-      <% end %>
-      </ul>
-    </div>
-
-    <span class="navTrigger">
-      <i></i>
-      <i></i>
-      <i></i>
-    </span>
-  </div>
-</nav>
-
-
-<br><br>
-
-<!-- Jquery needed -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="js/scripts.js"></script>
+        <li><a <%= link_to "Mon profil", user_path(current_user), :class => "menu-icone" %></a></li>
+        <li><a <%= link_to "Se déconnecter", destroy_user_session_path, :class => "menu-icone", :method => 'DELETE' %></a></a></li>
+        <% end %>
+        </ul>
+      </div>
+  </nav>
+</header>
