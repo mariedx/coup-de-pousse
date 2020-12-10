@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_143147) do
+ActiveRecord::Schema.define(version: 2020_12_09_180525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "zip_code"
+    t.string "city"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "street"
+    t.string "department"
+    t.string "department_code"
+    t.string "country"
+    t.string "country_code"
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -58,14 +74,12 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string "title"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sender_id"
     t.bigint "receiver_id"
     t.index ["receiver_id"], name: "index_chat_rooms_on_receiver_id"
     t.index ["sender_id"], name: "index_chat_rooms_on_sender_id"
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -105,7 +119,6 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
     t.boolean "parking"
     t.boolean "tools_available"
     t.integer "surface"
-    t.string "image_url"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,6 +140,18 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
     t.datetime "updated_at", null: false
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -152,4 +177,5 @@ ActiveRecord::Schema.define(version: 2020_12_09_143147) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users"
 end

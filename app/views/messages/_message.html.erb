@@ -5,8 +5,8 @@
       </div>
       <div class="col-md-11">
         <p class="card-text">
-          <span class="text-muted"><%= message.user.name %> à <%= message.timestamp %> dit :</span><br>
-          <p class='text-primary'><%= message.body %></p>
+          <span class="text-muted" > <%= message.user.name %> à <%= message.timestamp %> dit :</span><br>
+          <p class='text-primary' data-notification="<%=message.user.name%>"><%= message.body %></p>
         </p>
       </div>
     </div>
