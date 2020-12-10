@@ -6,7 +6,6 @@ class Appointment < ApplicationRecord
   validates_presence_of :start_date, :end_date
   validate :start_must_be_before_end_date
   validate :start_in_future
-  validate :duration
   after_create :new_app_guest, :new_app_host
   validate :no_appointment_overlap
 
@@ -21,16 +20,17 @@ class Appointment < ApplicationRecord
     AppointmentMailer.new_app_host(self).deliver_now
   end
 
+
+
+  # front methods
+
+
   def show_start_date
     self.start_date.strftime('%d/%m/%Y à %H:%M')
   end
 
   def show_end_date
     self.end_date.strftime('%d/%m/%Y à %H:%M')
-  end
-
-  def duration
-    self.start_date - self.end_date
   end
 
 
