@@ -8,11 +8,11 @@ class CommentsController < ApplicationController
     @comment.user_id = @user.id
 
     if @comment.save
-      flash[:notice] = "New comment Save in DB"
+      flash[:notice] = "Commentaire bien reçu !"
       redirect_to garden_path(@comment.garden_id)
     else
       puts @comment.errors.messages
-      puts "error comments"
+      puts "erreur"
     end
   end
 
@@ -24,10 +24,10 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(post_params)
-      flash[:notice] = "Comments updated in DB"
+      flash[:notice] = "Commentaire à jour"
       redirect_to garden_path(params[:garden_id])
     else
-      flash.now[:alert] = "We cannot updated this comments for this reason(s) :"
+      flash.now[:alert] = "Nous ne pouvons pas modifier ce commentaire pour la ou les raison(s) suivante(s) :"
       render :edit
     end
   end
@@ -35,10 +35,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
-      flash[:notice] = "Comment deleted in DB"
-      redirect_to garden_path(params[:garden_id]) 
-    else 
-      flash.now[:alert] = "We cannot deleted this comment for this reason(s) :"
+      flash[:notice] = "Commentaire supprimé"
+      redirect_to garden_path(params[:garden_id])
+    else
+      flash.now[:alert] = "Nous ne pouvons pas supprimer ce commentaire pour la ou les raison(s) suivante(s) :"
       render :edit
     end
   end

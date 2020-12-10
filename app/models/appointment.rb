@@ -29,6 +29,17 @@ class Appointment < ApplicationRecord
     self.start_date.strftime('%d/%m/%Y à %H:%M')
   end
 
+
+  def start_day
+    self.start_date.strftime('%d/%m/%Y')
+  end
+
+
+  def start_hour
+    self.start_date.strftime('%H:%M')
+  end
+
+
   def show_end_date
     self.end_date.strftime('%d/%m/%Y à %H:%M')
   end
