@@ -1,14 +1,7 @@
-<div class="card">
-  <div class="card-block">
-    <div class="row">
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-11">
-        <p class="card-text">
-          <span class="text-muted"><%= message.user.name %> à <%= message.timestamp %> dit :</span><br>
-          <p class='text-primary'><%= message.body %></p>
-        </p>
-      </div>
-    </div>
+<div class="message-show my-2">
+  <div class="message-sent">
+    <span class="text-muted"><%= message.user.name %></span><br>
+    <p class='text-message'><%= message.body %></p>
   </div>
+    <p class='text-date-show text-muted'> <%= message.timestamp %></p>
 </div>
