@@ -91,6 +91,29 @@ html, body {
   margin-bottom: 20px;
 }
 
+/* map */
+@media only screen and (min-width: 1100px) {
+  .container-map {
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+  }
+
+  .list-map {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    padding: 0 30px;
+  }
+
+  #mapid {
+    position: sticky!important;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+  }
+}
+
 /* Show garden */
 .picture-garden-show {
   width: 500px;
