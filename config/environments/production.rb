@@ -92,4 +92,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { :host => 'coup-de-pousse-staging.herokuapp.com' }
+
+
+  config.action_cable.allowed_request_origins = ['https://coup-de-pousse-staging.herokuapp.com',
+  'http://coup-depousse-staging.herokuapp.com']
+
+config.action_cable.url = "wss://scoup-depousse-staging.herokuapp.com/cable"
+
 end

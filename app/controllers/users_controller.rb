@@ -1,28 +1,33 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-    def show
-      @user = User.find(current_user.id)
+  def show
+    @user = User.find(params[:id])
 
-  #showing user's favorites
-      @user_favorites = current_user.favorites
-      @favorited_gardens = []
-      @user_favorites.each do |fav|
-        @favorited_gardens << fav.garden
-      end
+    #showing user's favorites
+    @user_favorites = current_user.favorites
+    @favorited_gardens = []
+    @user_favorites.each do |fav|
+    @favorited_gardens << fav.garden
+    end
 
+    #selecting garden created by user
+    @gardens = @user.gardens
 
-  #selecting garden created by user
-      @gardens = @user.gardens
-
-  #finding the user's appointments
-      @appointments = Appointment.all
-      @appointments.each do |app|
-        if (app.host || app.guest) == current_user
-        @appointments << app
-        end
+    #finding the user's appointments
+    @appointments = Appointment.all
+    @appointments.each do |app|
+      if (app.host || app.guest) == current_user
+      @appointments << app
       end
     end
+
+    #selecting chatrooms created by user or sent to user
+    @chat_rooms = ChatRoom.where(sender_id: current_user.id).or(ChatRoom.where(receiver_id: current_user.id))
+
+
+  end
+
 
   def create
     flash[:notice] = "Registration needed"
@@ -44,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :avatar, :description, :tools)
   end

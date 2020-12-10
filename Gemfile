@@ -63,9 +63,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'faker'
-gem 'faker'
 gem 'table_print'
 gem 'mailjet'
 gem 'simple_form'
 gem 'dotenv-rails'
 gem "aws-sdk-s3", require: false
+gem 'redis', '~> 3.2'
+gem 'jquery-rails'
+gem 'geocoder', '~> 1.3', '>= 1.3.7'

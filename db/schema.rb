@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_133629) do
+ActiveRecord::Schema.define(version: 2020_12_09_143147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,18 @@ ActiveRecord::Schema.define(version: 2020_12_07_133629) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.index ["receiver_id"], name: "index_chat_rooms_on_receiver_id"
+    t.index ["sender_id"], name: "index_chat_rooms_on_sender_id"
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "garden_id"
@@ -110,11 +122,26 @@ ActiveRecord::Schema.define(version: 2020_12_07_133629) do
     t.boolean "tools_available"
     t.integer "surface"
     t.bigint "user_id"
-    t.bigint "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_gardens_on_address_id"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,4 +165,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_133629) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
 end

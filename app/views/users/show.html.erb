@@ -1,114 +1,40 @@
- <% if current_user.id != @user.id  %>
-<div class="container mt-5 mb-5 bg-light-primary text-center"">
-  <br>
-  <h2>Profil<h2>
-  <br>
-  <%if @user.avatar.attached?%>
-  <br>
-
-
-          <img class="avatar" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture'%>
-
-          <%else%>
-
-          <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-
-        <%end%>
-        <br>
-      <div class="card-body">
-        <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if @user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-        <h6 class="font-weight-light">Nom : <p class="text-primary"><% if @user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-        <h6 class="font-weight-light">Description : <p class="text-primary"><% if @user.description != nil%> <%= @user.description%></p> <% end%>
-        <h6 class="font-weight-light">Outils : <p class="text-primary"><% if @user.tools != nil%> <%= @user.tools%></p> <% end%>
-        <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
-      </div>
-      <a href="mailto:<%= @user.email %>" class="btn btn-outline-primary mt-2">Contacter</a>
-      <br><br>
-  </div>
-
+<% if current_user.id != @user.id %>
+  <!--Profil of an user-->
+  <%= render partial: 'user_profil'%>
 
 <% else %>
-<div class="container mt-5 mb-5">
-<div class="row">
-  <div class="col-lg-3 col-md-6 mb-4 bg-light-primary text-center">
-    <br>
-    <h2>Mon profil<h2>
-      <br>
-      <!--Avatar-->
-      <%if @user.avatar.attached?%>
+  <!--Current_user dashboard-->
+  <div class="container">
+    <nav class="nav nav-tabs mt-3">
+    <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Mon profil</a>
+    <a class="nav-item nav-link" href="#p2" data-toggle="tab">Mes annonces</a>
+    <a class="nav-item nav-link" href="#p3" data-toggle="tab">Mes rendez-vous</a>
+    <a class="nav-item nav-link" href="#p4" data-toggle="tab">Mes favoris</a>
+    <a class="nav-item nav-link" href="#p5" data-toggle="tab">Mes messages</a>
+    </nav>
 
-        <img class="avatar" <%= image_tag @user.avatar, alt: 'avatar', id: 'profile_picture'%>
-
-        <%else%>
-
-        <img class="avatar" src = "https://www.leroiani.net/wp-content/uploads/2017/10/avatar.png">
-
-      <%end%>
-      <br>
-    <div class="card-body">
-      <h6 class="font-weight-light">Prénom : <p class="text-primary"><% if current_user.first_name != nil%> <%= @user.first_name%></p> <% end%>
-      <h6 class="font-weight-light">Nom : <p class="text-primary"><% if current_user.last_name != nil%> <%= @user.last_name%></p> <% end%>
-      <h6 class="font-weight-light">Description : <p class="text-primary"><% if current_user.description != nil%> <%= @user.description%></p> <% end%>
-      <h6 class="font-weight-light">Outils : <p class="text-primary"><% if current_user.tools != nil%> <%= @user.tools%></p> <% end%>
-      <h6 class="font-weight-light">Email: <p class="text-primary"><%= @user.email %></p>
-    </div>
-
-          <%= link_to "Editer mes informations", edit_user_path(@user), :class => "btn btn-success mb-3", :style => "width:230px" %>
-          <br>
-          <%= link_to "Editer mes identifiants", edit_user_registration_path, :class => "btn btn-primary mb-3", :style => "width:230px" %>
-          <br>
-  </div>
-
-  <div class="col-lg-6 col-md-6 mb-4">
-    <center>
-      <br>
-      <h2> Informations </h2>
-      <br><br>
-
-      <a href="<%= new_garden_path %>"><button type="button" new_garden_path class="btn btn-primary btn-lg">Ajouter mon jardin </button></a>
-
-        <br><br><br><br><br><br>
-        <div class="container">
-          <h4> Mes annonces </h4>
-          <br><br>
-          <% if @gardens != nil%>
-          <% @gardens.each_with_index do |garden, i| %>
-        <div class="card h-100 w-55">
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= garden.title %></a>
-            </h4>
-            <h5><%= garden.surface %> m2</h5>
-            <p class="card-text"><%= garden.description %></p>
-            <br>
-            <a href="<%= edit_garden_path %>"><button type="button" edit_garden_path class="btn btn-secondary">Editer mon annonce </button></a>
-          </div>
-        </div>
-        <%end%>
-        <%end%>
+    <div class="tab-content">
+      <!--Profil-->
+      <div class="tab-pane fade show active" id="p1">
+        <%= render partial: 'current_user_profil'%>
+      </div>
+      <!--Ad-->
+      <div class="tab-pane fade" id="p2">
+        <%= render partial: 'ad'%>
+      </div>
+      <!--Appointments-->
+      <div class="tab-pane fade" id="p3">
+        <%= render partial: 'appointment'%>
+      </div>
+      <!--Favorite gardens-->
+      <div class="tab-pane fade" id="p4">
+        <%= render partial: 'favorite'%>
+      </div>
+      <!--Messages-->
+      <div class="tab-pane fade" id="p5">
+        <%= render partial: 'chat_room'%>
       </div>
     </div>
-
-  <div class="col-lg-3 col-md-6 mb-4 bg-secondary-light">
-    <br>
-    <h2><center> Mes rendez-vous</center></h2>
-    <br><br>
-          <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Historique de mes rendez-vous</h6>
-
-            <%= render partial: 'appointment'%>
-
-            </small>
-          </div>
   </div>
-</div>
-</div>
 
-<div>
-  <center>
-    <h2> Mes favoris </h2>
-    <%= render partial: 'favorite'%>
-
-</div>
-<%end%>
-
+<% end %>

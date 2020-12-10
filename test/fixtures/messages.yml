@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  zip_code: MyString
-  city: MyString
+  body: MyText
+  user: one
+  chat_room: one
 
 two:
-  zip_code: MyString
-  city: MyString
+  body: MyText
+  user: two
+  chat_room: two
