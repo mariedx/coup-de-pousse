@@ -91,13 +91,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'coup-de-pousse-staging.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'coup-de-pousseherokuapp.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :mailjet_api
 
-  config.action_cable.allowed_request_origins = ['https://coup-de-pousse-staging.herokuapp.com',
-  'http://coup-depousse-staging.herokuapp.com']
+  config.action_cable.allowed_request_origins = ['https://coup-de-pousse.herokuapp.com',
+  'http://coup-depousse.herokuapp.com']
 
-  config.action_cable.url = "wss://scoup-depousse-staging.herokuapp.com/cable"
+  config.action_cable.url = "wss://scoup-depousse.herokuapp.com/cable"
 
 end
