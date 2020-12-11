@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
 
   def create
     if already_liked?
-      flash[:notice] = "Tu ne peux aimer qu'une fois ce jardin"
+      flash[:notice] = "Tu ne peux aimer qu'une fois un jardin"
     else
       @garden.favorites.create(user_id: current_user.id)
     end
@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     if !(already_liked?)
-      flash[:notice] = "Cannot unlike"
+      flash[:notice] = "Ce jardin ne figure déjà plus dans vos favoris"
     else
       @favorite.destroy
     end

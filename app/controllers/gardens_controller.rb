@@ -9,7 +9,7 @@ class GardensController < ApplicationController
     @user = @garden.user
   end
 
-  def edit 
+  def edit
     @garden = Garden.find(params[:id])
   end
 
@@ -19,7 +19,7 @@ class GardensController < ApplicationController
       flash[:notice] = "Annonce éditée !"
       redirect_to garden_path(@garden.id)
     else
-      flash.now[:alert] = "Impossible d'éditer l'annonce' :"
+      flash.now[:alert] = "Impossible de modifier l'annonce' :"
       render :edit
     end
   end
@@ -47,7 +47,7 @@ class GardensController < ApplicationController
       format.js {}
     end
   end
-  
+
   private
 
   def gardens_params
