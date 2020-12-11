@@ -17,13 +17,11 @@
   <div class = 'form-group'>
     <%= form_tag(gardens_path, method: :get) do %>
       <%= text_field_tag('query') %>
-      <%= submit_tag ("Rechercher"), class: "btn  btn-outline-primary " %>
+      <%= submit_tag ("Rechercher"), class: "btn  btn-outline-primary" %>
       <% end %>
     </div>
   <br><br>
 </center>
-
-
 
 
 <div class="container-map">
@@ -50,6 +48,7 @@
             <div class="item" data-lng = "<% garden.longitude %>" data-lat=  "<% garden.latitude %>" data-title = "<% garden.title %>"></div>
             <div class="bottom-card-info">
               <%= link_to "En savoir plus", garden_path(garden), class: "btn btn-outline-success"%>
+              <%= link_to "Supprimer", garden_path(garden.id), :class => "btn btn-outline-danger", :method => 'DELETE', :data => {:confirm => 'Sûr ?'} %>
             </div>
           </div>
         </div>
