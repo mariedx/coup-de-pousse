@@ -25,13 +25,17 @@ html, body {
 }
 
 .picture-garden-index {
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 0px 0px 5px;
   object-fit: cover;
-  margin-bottom: 15px;
+  margin-left: -15px;
 }
 
-.card-index {
-  width: 400px;
+
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+  border-radius: 5px;
 }
 
 
@@ -43,7 +47,6 @@ html, body {
   }
 
   .list-map {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 30px;
     padding: 0 30px;
