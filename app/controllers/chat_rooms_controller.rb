@@ -4,7 +4,6 @@ class ChatRoomsController < ApplicationController
     @chat_rooms = ChatRoom.where(sender_id: current_user.id).or(ChatRoom.where(receiver_id: current_user.id))
   end
 
-
   def new
     @chat_room = ChatRoom.new
     @user = User.find(params[:user_id])
@@ -28,6 +27,15 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
     @message = Message.new
+  end
+
+  def destroy
+    @chat_room = ChatRoom.find(params[:id])
+    @chat_room.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "La conversation est supprimée" }
+      format.js {}
+    end
   end
 
   private
