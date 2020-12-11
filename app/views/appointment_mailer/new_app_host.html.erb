@@ -1,7 +1,7 @@
 <h1>Hello jeune pousse !</h1>
 
 <p>Un futur co-jardinier vous a fait une demande de rendez-vous !</p>
-<p>Date du rendez-vous : <%=@appointment.start_date%></p>
+<p>Date du rendez-vous : <%=@appointment.show_start_date%></p>
 <p>Le co-jardinier vous adresse le message suivant :</p>
 <p>"<%=@appointment.message_contact%>"</p>
 <p>N'hésitez pas à consulter <%= link_to "son profil", user_url(@appointment.guest.id)%></p>
