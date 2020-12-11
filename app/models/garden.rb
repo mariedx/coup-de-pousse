@@ -9,7 +9,7 @@ class Garden < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
- 
+
 
   def address
     [street_number, street_name, zip_code, city, country].compact.join(', ')
@@ -19,10 +19,10 @@ class Garden < ApplicationRecord
   def self.search(query)
     if query
       self.where(city: query).first
-    else 
+    else
       Garden.all
     end
-
+  end
 
 
 end
