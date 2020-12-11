@@ -35,7 +35,6 @@
             <div class="item" data-lng = "<% garden.longitude %>" data-lat=  "<% garden.latitude %>" data-title = "<% garden.title %>"></div>
             <div class="bottom-card-info">
               <%= link_to "En savoir plus", garden_path(garden), class: "btn btn-outline-success"%>
-              <p class ="text-right mr-4"><%= garden.favorites.count %> <%= (garden.favorites.count) == 1 ? '🌷' : '🌷'%></p>
             </div>
           </div>
         </div>
@@ -79,12 +78,10 @@
   </script>
 
 </div>
-<hr>
-<div class="container text-center">
+<div class="text-center">
+  <br>
   <%if current_user != nil%>
     <%= render 'howto'%>
   <%end%>
 </div>
-
-
 <script src='https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_KEY'] %>&libraries=places&callback=initMap' async defer></script>
