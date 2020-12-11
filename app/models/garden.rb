@@ -17,4 +17,19 @@ class Garden < ApplicationRecord
     [street_number, street_name, zip_code, city, country].compact.join(', ')
   end
 
+  def self.search(search)
+    if search
+      address = Garden.find_by(city: search)
+      if address
+        self.where(garden_id: address)
+      else
+        Garden.all
+      end
+    else
+      Garden.all
+    end
+  end
+
+
+
 end

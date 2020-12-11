@@ -10,6 +10,22 @@
   <br><br>
 </div>
 
+<!--Filter -->
+
+<center>
+        <h3>Rechercher par ville :</h3>
+        
+        <div class = 'form-group'>
+          <%= form_tag(gardens_path, method: :get) do %>
+          <%= text_field_tag(:search, params[:search])%>
+          <%= submit_tag ("Rechercher"), class: "btn  btn-outline-primary " %>
+          <% end %>
+        </div>
+        <br><br>
+</center>
+
+
+
 
 <div class="container-map">
   <div class="list-map">
@@ -43,6 +59,8 @@
     <% end %>
   </div>
 
+
+
   <!-- Map Setting Up-->
   <div id="map" class="map"></div>
 
@@ -51,7 +69,13 @@
       //initiate de map
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 48.610875, lng: 2.4},
-        zoom: 5.5,
+        zoom: 6,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        rotateControl: true,
+        fullscreenControl: true,
         disableDefaultUI: true
 
     });
