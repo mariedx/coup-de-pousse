@@ -15,5 +15,19 @@ class AppointmentMailer < ApplicationMailer
     mail(to: @host.email, subject: "Quelqu'un veut jardiner avec vous !")
   end
 
+  def delete_app_guest(appointment)
+    @appointment = appointment
+    @guest = @appointment.guest
+
+    mail(to: @guest.email, subject: 'Un rendez-vous a été supprimé !')
+  end
+
+  def delete_app_host(appointment)
+    @appointment = appointment
+    @host = @appointment.host
+
+    mail(to: @host.email, subject: "Un rendez-vous a été supprimé")
+  end
+
 
 end

@@ -1,0 +1,11 @@
+Hello jeune pousse !
+
+Votre rendez-vous a été supprimé
+Il devait se tenir le <%=@appointment.show_start_date%> avec <%=@appointment.guest.name%>
+
+N'hésitez pas à contacter <%= link_to "votre invité.e", user_url(@appointment.guest.id)%>
+
+Vous pouvez prendre un nouveau rendez-vous depuis <%= link_to "votre profil", user_url(@appointment.host.id)%>
+
+
+À bientôt sur Coup de pousse !
