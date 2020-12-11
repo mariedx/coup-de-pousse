@@ -24,7 +24,7 @@ class Garden < ApplicationRecord
   #Add a search bar classifying all the gardens depending on their city
   def self.search(query)
     if query
-      self.where(city: query).first
+      self.where(city: query)
     else
       Garden.all
     end
