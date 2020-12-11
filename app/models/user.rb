@@ -16,9 +16,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
 
 
-    def to_param
-      [id, first_name.parameterize].join("-")
-     end
+  
 
     def name
       email.split('@')[0]
