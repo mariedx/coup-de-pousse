@@ -2,9 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
 }
 
-.img-team4{
+.img1{
+  height: 200px;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.img4{
   width: 103%;
 }
