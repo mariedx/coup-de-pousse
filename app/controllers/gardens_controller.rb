@@ -35,8 +35,9 @@ class GardensController < ApplicationController
       end
   end
 
+  #Display all the gardens or the gardens found by query
   def index
-    @gardens = Garden.all
+    @gardens = Garden.all || Garden.search(params[:query])
   end
 
   def destroy
@@ -51,7 +52,7 @@ class GardensController < ApplicationController
   private
 
   def gardens_params
-    params.require(:garden).permit(:title, :description, :orientation, :floor_type, :parking, :tools_available, :surface, :picture, :street_number, :street_name, :zip_code, :city, :country)
+    params.require(:garden).permit(:title, :description, :orientation, :floor_type, :parking, :tools_available, :surface, :picture, :street_number, :street_name, :zip_code, :city, :country, :query)
   end
 
 end

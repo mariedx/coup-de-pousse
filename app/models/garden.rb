@@ -9,12 +9,17 @@ class Garden < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  def to_param
-    [id, title.parameterize].join("-")
-  end
-
   def address
     [street_number, street_name, zip_code, city, country].compact.join(', ')
+  end
+
+  #Add a search bar classifying all the gardens depending on their city
+  def self.search(query)
+    if query
+      self.where(city: query).first
+    else 
+      Garden.all
+    end
   end
 
 end

@@ -8,6 +8,7 @@ class Appointment < ApplicationRecord
   validate :start_in_future
   after_create :new_app_guest, :new_app_host
   validate :no_appointment_overlap
+  before_destroy :destroy_app_guest, :destroy_app_host
 
 
   # emails methods
@@ -19,6 +20,15 @@ class Appointment < ApplicationRecord
   def new_app_host
     AppointmentMailer.new_app_host(self).deliver_now
   end
+
+  def destroy_app_guest
+    AppointmentMailer.delete_app_guest(self).deliver_now
+  end
+
+  def destroy_app_host
+    AppointmentMailer.delete_app_host(self).deliver_now
+  end
+
 
 
 

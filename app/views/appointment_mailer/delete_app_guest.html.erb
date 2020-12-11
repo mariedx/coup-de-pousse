@@ -1,0 +1,11 @@
+<h1>Hello jeune pousse !</h1>
+
+<p>Votre rendez-vous a été supprimé</p>
+<p>Il devait se tenir le <%=@appointment.show_start_date%> avec <%=@appointment.host.name%>  </p>
+
+<p>N'hésitez pas à contacter <%= link_to "votre hôte", user_url(@appointment.host.id)%></p>
+
+<p>Vous pouvez prendre un nouveau rendez-vous depuis <%= link_to "votre profil", user_url(@appointment.guest.id)%></p>
+
+
+<p>À bientôt sur Coup de pousse !</p>
