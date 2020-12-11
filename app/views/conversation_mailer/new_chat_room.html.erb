@@ -1,0 +1,9 @@
+<h1>Hello jeune pousse !</h1>
+
+<p>Une autre pousse tente de vous contacter ! </p>
+<p><%=@chat_room.sender.name%> voudrait vous parler de "<%=@chat_room.title%>"  </p>
+
+<p>Pour lire son message, RDV sur <%= link_to "votre profil", user_url(@receiver.id)%></p>
+
+
+<p>À bientôt sur Coup de pousse !</p>
