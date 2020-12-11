@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require cable
 //= require nav
+//= require flatpickr

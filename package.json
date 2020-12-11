@@ -1,5 +1,7 @@
 {
   "name": "coup-de-pousse",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "flatpickr": "^4.6.6"
+  }
 }

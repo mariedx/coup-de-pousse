@@ -3,6 +3,14 @@ class AppointmentsController < ApplicationController
 
   def new
     @garden = Garden.find(params[:garden_id])
+    @appointments = Appointment.where(garden_id: @garden.id)
+    @appointments_dates = @appointments.map do |app|
+      {
+        from: app.start_date,
+        to:   app.end_date
+      }
+    end
+
     @appointment = Appointment.new
   end
 
