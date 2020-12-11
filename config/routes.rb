@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :chat_rooms, only: [:new, :create, :show, :index]
+    resources :chat_rooms, except: [:edit]
   end
 
   mount ActionCable.server => '/cable'

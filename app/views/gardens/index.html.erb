@@ -26,6 +26,7 @@
 
 
 
+<input id="search-box" class="controls form-control" type="text" placeholder="Cherchez une école près de chez vous">
 
 <div class="container-map">
   <div class="list-map">
@@ -99,6 +100,30 @@
           maxWidth: 200
       });
     }
+
+
+
+
+
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('search-box');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input); //puts the searchbox at the bottom center of the map
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function() {
+        searchBox.setBounds(map.getBounds());
+    });
+
+
+
+
+
+
+
+
+
+
 
   </script>
 
