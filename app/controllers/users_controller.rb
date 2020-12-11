@@ -15,12 +15,7 @@ class UsersController < ApplicationController
     @gardens = @user.gardens
 
     #finding the user's appointments
-    @appointments = Appointment.all
-    @appointments.each do |app|
-      if (app.host || app.guest) == current_user
-      @appointments << app
-      end
-    end
+    @appointments = Appointment.where(guest_id: current_user.id).or(Appointment.where(host_id: current_user.id))
 
     #selecting chatrooms created by user or sent to user
     @chat_rooms = ChatRoom.where(sender_id: current_user.id).or(ChatRoom.where(receiver_id: current_user.id))
