@@ -1,11 +1,11 @@
 <div class="container bg-light-primary text-center my-5">
   <br>
   <h2> Mes Annonces </h2>
-  <%= link_to "Ajouter mon jardin", new_garden_path, :class => "btn btn-outline-primary mt-2" %>
+  <%= link_to "Ajouter un jardin", new_garden_path, :class => "btn btn-outline-primary mt-2" %>
 
-  <h4 class="my-4"> Mes annonces publiées </h4>
+  <h4 class="border-bottom border-gray pb-3 my-4"> Mes annonces publiées </h4>
   <!--Cards -->
-  <div class="row text-left mt-5 mx-5 dashboard-card">
+  <div class="row text-left mt-5 mx-5">
     <% @gardens.each_with_index do |garden, i| %>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card">
