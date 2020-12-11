@@ -17,7 +17,7 @@ class Garden < ApplicationRecord
   def self.search(query)
     if query
       self.where(city: query).first
-    else 
+    else
       Garden.all
     end
   end
