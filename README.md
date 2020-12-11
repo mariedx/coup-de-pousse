@@ -19,7 +19,7 @@ C’est aussi une communauté de petites pousses qui se retrouvent pour échange
 - [Aimery CAYOL](https://github.com/Aimery-Cayol)
 - [Marie DECHAUX](https://github.com/mariedx) 
 
-## 🌱 Bonnes récoltes ! 
+# 🌱 Bonnes récoltes ! 
 
 ![Alt Text](https://images.pexels.com/photos/5528951/pexels-photo-5528951.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 
