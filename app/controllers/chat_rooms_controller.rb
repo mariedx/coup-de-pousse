@@ -18,7 +18,7 @@ class ChatRoomsController < ApplicationController
 
     if @chat_room.save
       flash[:success] = 'Conversation créée!'
-      redirect_to user_chat_rooms_path(@sender.id)
+      redirect_to user_path(current_user) 
     else
       render 'new'
     end
