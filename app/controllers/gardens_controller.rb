@@ -25,19 +25,18 @@ class GardensController < ApplicationController
   end
 
   def create
-    @garden = Garden.create(gardens_params)
-    @garden.user = current_user
-      if @garden.save
-        redirect_to root_path
-        flash[:success] = "Annonce créée avec succès !"
-      else
-        render :new
-      end
+    @garden = Garden.new(gardens_params.merge(user_id: current_user.id))
+    if @garden.save
+      redirect_to root_path
+      flash[:success] = "Annonce créée avec succès !"
+    else
+      render :new
+    end
   end
 
   #Display all the gardens or the gardens found by query
   def index
-    @gardens = Garden.all || Garden.search(params[:query])
+    @gardens = Garden.search(params[:query]) 
   end
 
   def destroy
