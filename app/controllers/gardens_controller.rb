@@ -1,4 +1,6 @@
 class GardensController < ApplicationController
+  before_action :authenticate_user!,
+
 
   def new
     @garden = Garden.new
@@ -9,7 +11,7 @@ class GardensController < ApplicationController
     @user = @garden.user
   end
 
-  def edit 
+  def edit
     @garden = Garden.find(params[:id])
   end
 
@@ -36,7 +38,7 @@ class GardensController < ApplicationController
 
   #Display all the gardens or the gardens found by query
   def index
-    @gardens = Garden.search(params[:query]) 
+    @gardens = Garden.search(params[:query])
   end
 
   def destroy
@@ -47,7 +49,7 @@ class GardensController < ApplicationController
       format.js {}
     end
   end
-  
+
   private
 
   def gardens_params
